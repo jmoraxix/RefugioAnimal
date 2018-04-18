@@ -12,9 +12,9 @@
 
 session_start();
 
-include ('../Controladores/personal.php');
+include ('./Controladores/personal.php');
 
-include ('../Controladores/centroDeManejo.php');
+include ('./Controladores/centroDeManejo.php');
 
 $personal = new personal();
 
@@ -29,7 +29,7 @@ if($_SESSION['login'] != true)
 }
 $centro_manejo = new centroDeManejo();
 
-$datos = mysqli_query($centro_manejo->db, "SELECT * FROM centro_de_manejo");
+//$datos = mysqli_query($centro_manejo->db, "SELECT * FROM centro_de_manejo");
 ?>
 
 <script>

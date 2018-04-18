@@ -12,7 +12,7 @@
 
 session_start();
 
-include ('../Controladores/personal.php');
+include ('./Controladores/personal.php');
 
 $personal = new personal();
 

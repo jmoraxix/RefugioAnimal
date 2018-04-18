@@ -13,8 +13,8 @@
 
 session_start();
 
-include ('../Controladores/personal.php');
-include ('../Controladores/centroDeManejo.php');
+include ('./Controladores/personal.php');
+include ('./Controladores/centroDeManejo.php');
 
 $personal = new personal();
 $centro_manejo = new centroDeManejo();

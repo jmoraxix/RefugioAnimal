@@ -12,7 +12,7 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-include_once '../Controladores/personal.php';
+include_once './Controladores/personal.php';
 $personal = new personal();
 if (isset($_REQUEST['submit'])){
     extract($_REQUEST);

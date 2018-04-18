@@ -1,6 +1,6 @@
 <?php
 include "db_config.php";
-include_once '../Modelos/ModeloPersonal.php';
+include_once './Modelos/ModeloPersonal.php';
 //include_once '/opt/lampp/htdocs/TESTDE/sinac-input-output/Modelos/ModeloPersonal.php';
 
 class personal
@@ -9,11 +9,7 @@ class personal
 
     public function __construct()
     {
-        $this->db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-        if (mysqli_connect_errno()) {
-            echo "Error: No se pudo conectar a la base de datos.";
-            exit;
-        }
+       
     }
 
     /*** registration process/proceso de registro ***/

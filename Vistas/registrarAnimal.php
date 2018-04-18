@@ -12,8 +12,8 @@
 
 session_start();
 
-include_once '../Controladores/animal.php';
-include ('../Controladores/personal.php');
+include_once './Controladores/animal.php';
+include ('./Controladores/personal.php');
 
 $personal = new personal();
 $animal = new animal();

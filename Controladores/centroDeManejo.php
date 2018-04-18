@@ -11,19 +11,17 @@
  */
 
 
-include_once '../Modelos/ModeloCentroDeManejo.php';
-
 class centroDeManejo
 {
     public $db;
 
     public function __construct()
     {
-        $this->db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-        if (mysqli_connect_errno()) {
-            echo "Error: No se pudo conectar a la base de datos.";
-            exit;
-        }
+//        $this->db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+//        if (mysqli_connect_errno()) {
+//            echo "Error: No se pudo conectar a la base de datos.";
+//            exit;
+//        }
     }
 
     public function registrar_centro_de_manejo($nombre, $direccion, $capacidad, $cantidad_personal,

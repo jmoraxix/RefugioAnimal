@@ -12,7 +12,7 @@
 
 //session_start();
 
-include ('../Controladores/personal.php');
+include ('./Controladores/personal.php');
 
 $personal = new personal();
 
@@ -26,7 +26,7 @@ if($_SESSION['login'] != true)
     header("location: login.php");
 }*/
 
-$datos = mysqli_query($personal->db, "SELECT * FROM personal");
+//$datos = mysqli_query($personal->db, "SELECT * FROM personal");
 ?>
 
 <script>
