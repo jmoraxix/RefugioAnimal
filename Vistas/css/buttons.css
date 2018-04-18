@@ -1,0 +1,91 @@
+
+/*
+ * Glyphicons
+ *
+ * Special styles for displaying the icons and their classes in the docs.
+ */
+
+.bs-glyphicons {
+  padding-left: 0;
+  padding-bottom: 1px;
+  margin-bottom: 20px;
+  list-style: none;
+  overflow: hidden;
+}
+.bs-glyphicons li {
+  float: left;
+  width: 25%;
+  height: 115px;
+  padding: 10px;
+  margin: 0 -1px -1px 0;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+.bs-glyphicons .glyphicon {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+.bs-glyphicons .glyphicon-class {
+  display: block;
+  text-align: center;
+  word-wrap: break-word; /* Help out IE10+ with class names */
+}
+.bs-glyphicons li:hover {
+  background-color: rgba(86,61,124,.1);
+}
+
+@media (min-width: 768px) {
+  .bs-glyphicons li {
+    width: 12.5%;
+  }
+}
+
+.round {
+    max-width: 0px;
+    float: right;
+    padding-right: 130px;
+}
+
+.round .button:hover {
+    color: #fff;
+}
+
+.round .button {
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    margin: 15px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgb(108,175,78);
+    border-radius: 5px;
+    transition: color .5s;
+    background-color: transparent;
+}
+.round .button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: rgb(108,175,78);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+    top: 0;
+    left: -200%;
+    transition: all .7s;
+}
+.round .button:hover:before {
+    top: -30px;
+    left: -30px;
+}
+.button {
+    color: rgb(108,175,78);
+    text-decoration: none;
+    font-family: Helvetica;
+    text-align: center;
+    font-size: 18px
+}

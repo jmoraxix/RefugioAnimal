@@ -1,0 +1,350 @@
+@charset "utf-8";
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+body {
+  background-image: url(../images/fondo.jpg);
+  color: rgb(108,175,78);
+  font: 87.5%/1.7em 'Open Sans', sans-serif;
+  margin:0px;
+  padding: 0px;
+}
+.background-inicio {
+  font-family: 'Open Sans', sans-serif;
+  background-image: url("../images/sloth.jpg");
+  background-repeat: no-repeat;
+  min-height: 600px;
+  background-size: cover;
+  background-color: #f7f7f7;
+  font-size: 12px;
+
+}
+
+/* Logo & Navigation */
+
+.header .container{
+   height:70px;
+   width: inherit;
+   background-color: rgba(87,88,87,0.9);
+   padding: 0px;
+}
+
+.header .logo h1{
+   width:100px; 
+   height:0px;
+
+}
+
+.header .logo h1 a{
+   height: 80px;
+   color:rgba(87,88,87,0.7);
+   padding-left: 20px;
+}
+
+.logo{
+  margin-top: -15px;
+}
+
+.page-content > .row {
+  margin-top: 20px;
+}
+
+/* Sidebar navigation */
+
+.content-box, .content-box-large {
+   margin-bottom: 30px !important;
+   margin:20px !important;
+   background-color:rgba(95,94,94,0.8);
+   border-radius:10px;
+   padding:10px;
+   border-left:1px solid #eee;
+   border-top:1px solid #eee;
+   border-right:2px solid #eee;
+   border-bottom:2px solid #eee; 
+}
+
+.content-box-large {
+  padding: 20px;
+}
+
+.box-with-header {
+  border-top: none;
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+}
+
+
+.sidebar ul.nav, .sidebar ul.nav ul{
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.sidebar ul.nav ul {
+   margin:0px;
+   padding:0px;
+   display:none;
+}
+
+.sidebar .nav li.open ul{
+   display:block;
+}
+
+.sidebar .nav > li {
+  margin: 0;
+   border-bottom:1px dashed #eee;
+}
+
+.sidebar .nav > li:last-child{
+   border-bottom:0px;
+}
+
+.sidebar .nav > li li {
+  margin: 0;
+}
+
+.sidebar .nav > li li a{
+   padding-left:25px;
+}
+
+.sidebar .nav > li > a {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 15px 15px;
+  color: white;
+  display: block;
+   font-weight:bold;
+   background:none;
+  text-decoration: none;
+   border-top:0px;
+   font-weight:bold;
+   text-align: center;
+}
+
+.sidebar .nav > li > a > i{
+   margin-right:5px;
+}
+
+.sidebar .nav > li > ul > li > a {
+  font-size: 13px;
+  line-height: 20px;
+  padding: 8px 10px 8px 40px;
+  color: #999;
+   background:#fff;
+  display: block;
+  text-decoration: none;
+   border-top:0px;
+   font-weight:bold;
+}
+
+.sidebar .nav > li > ul > li.active > a{
+   background:#fff;
+   border-top:0px;
+   color:#555;
+}
+
+.sidebar .nav > li > ul > li > a:hover{
+   background:#fff;
+   color:#555;
+   border-bottom:0px;
+}
+
+.sidebar .nav li a:hover, .sidebar .nav li.current > a {
+  background: rgb(108,175,78);
+  color: #555;
+   border-bottom:0px;
+}
+
+.sidebar .nav li.open > a {
+   background:rgb(108,175,78);
+   color: #555;
+   border-bottom:1px dashed #eee;
+}
+
+.sidebar .nav a .caret {
+  padding-right: 20px;
+  width: 0;
+  height: 0;
+  display: inline-block;
+  vertical-align: top;
+  border-top: 4px solid #aaa;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  content: "";
+   margin-top: 8px;
+  margin-left: 2px;
+}
+
+.sidebar .nav a:hover .caret {
+  border-top-color: #aaa;
+}
+
+.sidebar .nav li.open > a > .caret {
+  border-top: none;
+  border-bottom: 4px solid #aaa !important;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.sidebar .nav li.open > a:hover > .caret {
+  border-bottom-color: #aaa;
+}
+
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
+  transition: 1s opacity;
+}
+
+input {
+  border: none;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5em;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+after { clear: both; }
+
+#login {
+  margin: 50px auto;
+  width: 320px;
+}
+
+#login form {
+  margin: auto;
+  padding: 22px 22px 22px 22px;
+  width: 100%;
+  border-radius: 5px;
+  background: rgba(40,46,51,0.75);
+  border-top: 3px solid #434a52;
+  border-bottom: 3px solid #434a52;
+}
+
+#login form span {
+  background-color: #363b41;
+  border-radius: 3px 0px 0px 3px;
+  border-right: 3px solid #434a52;
+  color: #606468;
+  display: block;
+  float: left;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+}
+
+#login form input[type="text"] {
+  background-color: #3b4148;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+}
+
+#login form input[type="password"] {
+  background-color: #3b4148;
+  border-radius: 0px 3px 3px 0px;
+  color: #a9a9a9;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 235px;
+  height: 50px;
+}
+
+#login form input[type="submit"] {
+  background: #b5cd60;
+  border: 0;
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+#login form input[type="submit"]:hover {
+  background: #16aa56;
+}
+
+/* Footer */
+
+footer{
+   background-color: rgba(87,88,87,0.9);
+   box-shadow:inset 0px 0px 3px #111;
+   color:#fff;
+   font-size:14px;
+   line-height:25px;
+   padding:10px 0px 10px 0px;
+   bottom: 0px;
+}
+
+footer a{
+   color:#eee;
+   text-decoration:none;
+   text-align: center;
+   border-bottom:1px dotted #888;
+}
+
+footer a:hover{
+   color:#aaa;
+   text-decoration:none;
+   border:0px;
+}
+
+footer hr{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top: #000 1px solid;
+  border-bottom: #212121 1px solid;
+}
+
+footer .copy{
+   font-size:13px;
+   margin:15px 0px;
+   text-align: center;
+}
+
+.isa_info, .isa_success, .isa_warning, .isa_error {
+margin: 10px 0px;
+padding:12px;
+ 
+}
+.isa_info {
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+.isa_success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.isa_warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+.isa_error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+.isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+    margin:10px 22px;
+    font-size:2em;
+    vertical-align:middle;
+}

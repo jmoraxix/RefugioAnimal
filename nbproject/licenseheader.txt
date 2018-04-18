@@ -1,0 +1,14 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Lenguaje de Consulta de Base de Datos
+${licensePrefix}
+${licensePrefix}Marcela Cascante
+${licensePrefix}Bernardo Gonzalez
+${licensePrefix}Kimberly Mora
+${licensePrefix}Jose Mora
+${licensePrefix}
+${licensePrefix}Primer cuatrimestre, 2018
+<#if licenseLast??>
+${licenseLast}
+</#if>
