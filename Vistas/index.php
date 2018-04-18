@@ -12,7 +12,7 @@
 
 session_start();
 
-include_once './Controladores/personal.php';
+include_once '../Controladores/personal.php';
 
 $personal = new personal();
 
@@ -32,8 +32,8 @@ if (isset($_REQUEST['logout'])){
   <meta charset="UTF-8">
   <title>Inicio</title>
   
-      <link rel="stylesheet" href="css/style.css">  
-      <link rel="stylesheet" href="css/buttons.css"> 
+      <link rel="stylesheet" href="../css/style.css">  
+      <link rel="stylesheet" href="../css/buttons.css"> 
 
 </head>
 
@@ -45,7 +45,7 @@ if (isset($_REQUEST['logout'])){
 	           <div class="col-md-5">
 	              <!-- Logo -->
 	              <div class="logo">
-	                 <h1><a href="index.php"><img src="images/logo.png" width="70" height="60"></a></h1>
+	                 <h1><a href="index.php"><img src="../images/logo.png" width="70" height="60"></a></h1>
 	              </div>
 	           </div>
 	           <div class="col-md-2">
@@ -64,7 +64,7 @@ if (isset($_REQUEST['logout'])){
 		  	<div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li class="current"><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
+                    <li class="current"> <a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
                     <li><a href="busquedaPersonal.php"><i class="glyphicon glyphicon-stats"></i> Personal </a></li>
                     <li><a href="registrar_personal.php"><i class="glyphicon glyphicon-calendar"></i> Registrar Personal </a></li>
                     <li><a href="busquedaAnimales.php"><i class="glyphicon glyphicon-list"></i> Animales </a></li>

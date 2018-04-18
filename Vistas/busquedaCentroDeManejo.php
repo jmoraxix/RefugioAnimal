@@ -12,9 +12,9 @@
 
 session_start();
 
-include ('./Controladores/personal.php');
+include ('../Controladores/personal.php');
 
-include ('./Controladores/centroDeManejo.php');
+include ('../Controladores/centroDeManejo.php');
 
 $personal = new personal();
 
@@ -84,7 +84,7 @@ $centro_manejo = new centroDeManejo();
     <link href="https://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css" rel="stylesheet" media="screen">
 
     <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
     <link href="css/style.css" rel="stylesheet">
     <link href="css/buttons.css" rel="stylesheet">
@@ -102,7 +102,7 @@ $centro_manejo = new centroDeManejo();
         <div class="col-md-5">
             <!-- Logo -->
             <div class="logo">
-                <h1><a href="index.php"><img src="images/logo.png" width="70" height="60"></a></h1>
+                <h1><a href="index.php"><img src="../images/logo.png" width="70" height="60"></a></h1>
             </div>
         </div>
         <div class="round">

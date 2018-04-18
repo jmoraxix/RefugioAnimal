@@ -10,7 +10,7 @@
  * Primer cuatrimestre, 2018
  */
 
-include_once './Modelos/ModeloAnimal.php';
+include_once '../Modelos/ModeloAnimal.php';
 
 class animal
 {

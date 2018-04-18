@@ -10,9 +10,9 @@
  * Primer cuatrimestre, 2018
  */
 
-//session_start();
+session_start();
 
-include ('./Controladores/personal.php');
+include ('../Controladores/personal.php');
 
 $personal = new personal();
 
@@ -85,10 +85,10 @@ if($_SESSION['login'] != true)
     <link href="https://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css" rel="stylesheet" media="screen">
 
     <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/buttons.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/buttons.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -103,7 +103,7 @@ if($_SESSION['login'] != true)
         <div class="col-md-5">
             <!-- Logo -->
             <div class="logo">
-                <h1><a href="index.php"><img src="images/logo.png" width="70" height="60"></a></h1>
+                <h1><a href="index.php"><img src="../images/logo.png" width="70" height="60"></a></h1>
             </div>
         </div>
         <div class="round">

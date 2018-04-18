@@ -1,6 +1,6 @@
 <?php
 include "db_config.php";
-include_once './Modelos/ModeloPersonal.php';
+include_once '../Modelos/ModeloPersonal.php';
 //include_once '/opt/lampp/htdocs/TESTDE/sinac-input-output/Modelos/ModeloPersonal.php';
 
 class personal

@@ -12,8 +12,8 @@
 
 session_start();
 
-include ('./Controladores/animal.php');
-include ('./Controladores/personal.php');
+include ('../Controladores/animal.php');
+include ('../Controladores/personal.php');
 
 $personal = new personal();
 $animal = new animal();
@@ -23,10 +23,10 @@ if (isset($_REQUEST['logout'])){
     $personal->user_logout();
 }
 
-if($_SESSION['login'] != true)
-{
-    header("location: login.php");
-}
+//if($_SESSION['login'] != true)
+//{
+//    header("location: login.php");
+//}
 
 $datos = mysqli_query($animal->db, "SELECT * FROM animal");
 ?>
@@ -110,7 +110,7 @@ $datos = mysqli_query($animal->db, "SELECT * FROM animal");
         <div class="col-md-5">
             <!-- Logo -->
             <div class="logo">
-                <h1><a href="index.php"><img src="images/logo.png" width="70" height="60"></a></h1>
+                <h1><a href="index.php"><img src="../images/logo.png" width="70" height="60"></a></h1>
             </div>
         </div>
         <div class="round">

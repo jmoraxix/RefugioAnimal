@@ -12,7 +12,8 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-include_once './Controladores/personal.php';
+include_once '../Controladores/personal.php';
+
 $personal = new personal();
 if (isset($_REQUEST['submit'])){
     extract($_REQUEST);
@@ -32,7 +33,7 @@ if (isset($_REQUEST['submit'])){
     <meta http-equiv="Content-Type" content="text/html; charset= "ISO-8859-1">
     <title>Login Form</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
