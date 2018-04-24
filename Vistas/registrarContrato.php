@@ -126,29 +126,16 @@ if (isset($_REQUEST['submit'])) {
                 <ul class="nav">
                     <!-- Main menu -->
                     <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
-                    <li><a href="busquedaPersonal.php"><i class="glyphicon glyphicon-stats"></i> Personal </a></li>
-                    <li><a href="registrar_personal.php"><i class="glyphicon glyphicon-calendar"></i> Registrar Personal </a></li>
+                    <li><a href="busquedaAdoptante.php"><i class="glyphicon glyphicon-stats"></i> Adoptantes </a></li>
                     <li><a href="busquedaAnimales.php"><i class="glyphicon glyphicon-list"></i> Animales </a></li>
-                    <li><a href="registrarAnimal.php"><i class="glyphicon glyphicon-record"></i> Registrar Animal </a></li>
-                    <li><a href="entradas_salidas.php"><i class="glyphicon glyphicon-tasks"></i> Entradas y Salidas</a></li>
-                    <li class="current submenu">
-                         <a>
-                            <i class="glyphicon glyphicon-list"></i> Centros de Manejo
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                         	<li><a href="busquedaCentroDeManejo.php">Ver Centros</a></li>
-                            <li class="current"><a href="registrar_centro_manejo.php">Registrar Centros</a></li>
-                        </ul>
-                    </li>
+                    <li  class="current"><a href="busquedaContratos.php"><i class="glyphicon glyphicon-tasks"></i> Contratos</a></li>
                 </ul>
              </div>
           </div>
           <div class="col-md-6">
 	  					<div class="content-box-large">
 			  				<div class="panel-heading">
-					            <div class="panel-title">Registro Centro de Manejo</div>
+					            <div class="panel-title">Registro de Contrato</div>
 					        </div>
 			  				<div class="panel-body">
 			  					<form action="" method="post" name="reg">
@@ -179,7 +166,7 @@ if (isset($_REQUEST['submit'])) {
 										</div>
 									</fieldset>
 									<div>
-											<input class="btn btn-primary fa fa-save" type="submit" name="submit" value="Registrar" onclick="return(submitreg());">
+											<input class="btn btn-primary fa fa-save" type="submit" name="submit" value="Registrar" onclick="return(submitreg()); location='busquedaContrato.php'">
 									</div>
 								</form>
 			  				</div>

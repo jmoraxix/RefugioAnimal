@@ -132,7 +132,7 @@ $centro_manejo = new centroDeManejo();
                     <div class="panel-title">Personal</div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-xs-4">
                         <div class="dataTables_length" id="example_length"><label>
                                 <select name="example_length" aria-controls="example" size="1">
                                     <option selected="selected" value="10">10</option>
@@ -142,9 +142,12 @@ $centro_manejo = new centroDeManejo();
                                 </select>Resultados por p&#225;gina</label>
                         </div>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-5">
                         <input type="text" id="centro_a_buscar" onkeyup="search()"
                                placeholder="Busque por alguno de los campos de la tabla que se muestra abajo">
+                    </div>
+					<div class="col-xs-3">
+							<input class ="btn btn-primary fa fa-save" type="submit" value="Nuevo Contrato" onclick= "location='registrarContrato.php'">
                     </div>
                 </div>
                 <div class="panel-body">
