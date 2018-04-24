@@ -86,16 +86,16 @@ $datos = mysqli_query($animal->db, "SELECT * FROM animal");
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Personal</title>
+    <title>Adoptantes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- jQuery UI -->
     <link href="https://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css" rel="stylesheet" media="screen">
 
     <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/buttons.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/buttons.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -127,29 +127,16 @@ $datos = mysqli_query($animal->db, "SELECT * FROM animal");
                 <ul class="nav">
                     <!-- Main menu -->
                     <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
-                    <li><a href="busquedaPersonal.php"><i class="glyphicon glyphicon-stats"></i> Personal </a></li>
-                    <li><a href="registrar_personal.php"><i class="glyphicon glyphicon-calendar"></i> Registrar Personal </a></li>
+                    <li><a href="busquedaAdoptante.php"><i class="glyphicon glyphicon-stats"></i> Adoptantes </a></li>
                     <li class="current"><a href="busquedaAnimales.php"><i class="glyphicon glyphicon-list"></i> Animales </a></li>
-                    <li><a href="registrarAnimal.php"><i class="glyphicon glyphicon-record"></i> Registrar Animal </a></li>
-                    <li><a href="entradas_salidas.php"><i class="glyphicon glyphicon-tasks"></i> Entradas y Salidas</a></li>
-                    <li class="submenu">
-                        <a>
-                            <i class="glyphicon glyphicon-list"></i> Centros de Manejo
-                            <span class="caret pull-right"></span>
-                        </a>
-                        <!-- Sub menu -->
-                        <ul>
-                            <li><a href="busquedaCentroDeManejo.php">Ver Centros</a></li>
-                            <li><a href="registrar_centro_manejo.php">Registrar Centros</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="busquedaContrato.php"><i class="glyphicon glyphicon-record"></i> Contratos </a></li>
                 </ul>
             </div>
         </div>
         <div class="col-md-6">
             <div class="content-box-large">
                 <div class="panel-heading">
-                    <div class="panel-title">Personal</div>
+                    <div class="panel-title">Animales</div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
@@ -215,7 +202,7 @@ $datos = mysqli_query($animal->db, "SELECT * FROM animal");
     <div class="container">
 
         <div class="copy text-center">
-            Copyright 2014 <a href='#'>Website</a>
+            Facebook <a href='#'>Website</a>
         </div>
 
     </div>

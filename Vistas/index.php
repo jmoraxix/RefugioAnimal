@@ -65,22 +65,9 @@ if (isset($_REQUEST['logout'])){
                 <ul class="nav">
                     <!-- Main menu -->
                     <li class="current"> <a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
-                    <li><a href="busquedaPersonal.php"><i class="glyphicon glyphicon-stats"></i> Personal </a></li>
-                    <li><a href="registrar_personal.php"><i class="glyphicon glyphicon-calendar"></i> Registrar Personal </a></li>
+                    <li><a href="busquedaAdoptante.php"><i class="glyphicon glyphicon-stats"></i> Adoptantes </a></li>
                     <li><a href="busquedaAnimales.php"><i class="glyphicon glyphicon-list"></i> Animales </a></li>
-                    <li><a href="registrarAnimal.php"><i class="glyphicon glyphicon-record"></i> Registrar Animal </a></li>
-                    <li><a href="entradas_salidas.php"><i class="glyphicon glyphicon-tasks"></i> Entradas y Salidas</a></li>
-                    <li class="submenu">
-                         <a>
-                            <i class="glyphicon glyphicon-list"></i> Centros de Manejo
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                         	<li><a href="busquedaCentroDeManejo.php">Ver Centros</a></li>
-                            <li><a href="registrar_centro_manejo.php">Registrar Centros</a></li>
-                        </ul>
-                    </li>
+					<li><a href="busquedaContrato.php"><i class="glyphicon glyphicon-list"></i> Contratos </a></li>
                 </ul>
              </div>
 		  </div>
@@ -88,7 +75,7 @@ if (isset($_REQUEST['logout'])){
          <div class="container">
          
             <div class="copy text-center">
-               Copyright 2014 <a href='#'>Website</a>
+               Facebook<a href='#'>Website</a>
             </div>
             
          </div>

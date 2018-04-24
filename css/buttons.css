@@ -61,7 +61,7 @@
     margin: 15px;
     position: relative;
     overflow: hidden;
-    border: 2px solid rgb(108,175,78);
+    border: 2px solid rgb(0, 51, 153);
     border-radius: 5px;
     transition: color .5s;
     background-color: transparent;
@@ -83,7 +83,7 @@
     left: -30px;
 }
 .button {
-    color: rgb(108,175,78);
+    color: rgb(0, 51, 153);
     text-decoration: none;
     font-family: Helvetica;
     text-align: center;

@@ -6,17 +6,17 @@
 }
 
 body {
-  background-image: url(../images/fondo.jpg);
-  color: rgb(108,175,78);
+  background-image: url(../images/fondo.png);
+  color: rgb(0, 51, 153);
   font: 87.5%/1.7em 'Open Sans', sans-serif;
   margin:0px;
   padding: 0px;
 }
 .background-inicio {
   font-family: 'Open Sans', sans-serif;
-  background-image: url("../images/sloth.jpg");
+  background-image: url("../images/perritos.png");
   background-repeat: no-repeat;
-  min-height: 600px;
+  min-height: 700px;
   background-size: cover;
   background-color: #f7f7f7;
   font-size: 12px;
@@ -153,8 +153,8 @@ body {
 }
 
 .sidebar .nav li a:hover, .sidebar .nav li.current > a {
-  background: rgb(108,175,78);
-  color: #555;
+  background: rgb(0, 51, 153);
+  color: #777;
    border-bottom:0px;
 }
 
