@@ -122,7 +122,7 @@ $centro_manejo = new centroDeManejo();
                     <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
                     <li><a href="busquedaAdoptante.php"><i class="glyphicon glyphicon-stats"></i> Adoptantes </a></li>
                     <li><a href="busquedaAnimales.php"><i class="glyphicon glyphicon-list"></i> Animales </a></li>
-                    <li  class="current"><a href="busquedaContratos.php"><i class="glyphicon glyphicon-tasks"></i> Contratos</a></li>
+                    <li  class="current"><a href="busquedaContrato.php"><i class="glyphicon glyphicon-tasks"></i> Contratos</a></li>
                 </ul>
             </div>
         </div>
@@ -154,24 +154,22 @@ $centro_manejo = new centroDeManejo();
                     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="Tabla_De_Centros">
                         <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Direcci&#243;n</th>
-                            <th>Capacidad</th>
-                            <th>Cantidad de Personal</th>
-                            <th>Persona a Cargo</th>
-                            <th>Tel&#233;fono</th>
+                            <th>ID</th>
+                            <th>C&#233;dula Adoptante</th>
+                            <th>Nombre del Animal</th>
+                            <th>Fecha de Contrato</th>
+                            <th>Estado de Contrato</th>
                             <th colspan="2"></th>
                         </tr>
                         </thead>
 
                         <?php while ($row = mysqli_fetch_array($datos)) { ?>
                             <tr>
-                                <td><?php echo $row['nombre']; ?></td>
-                                <td><?php echo $row['direccion']; ?></td>
-                                <td><?php echo $row['capacidad']; ?></td>
-                                <td><?php echo $row['cantidad_personal']; ?></td>
-                                <td><?php echo $row['persona_a_cargo']; ?></td>
-                                <td><?php echo $row['telefono']; ?></td>
+                                <td><?php echo $row['id_contrato']; ?></td>
+                                <td><?php echo $row['ADOPTANTE_ced_adoptante']; ?></td>
+                                <td><?php echo $row['ANIMAL_id_animal']; ?></td>
+                                <td><?php echo $row['fecha_contrato']; ?></td>
+                                <td><?php echo $row['estado_contrato']; ?></td>
                                 <td>
                                     <a href="editarCentroDeManejo.php?edit=<?php echo $row['nombre']; ?>" class="edit_btn" >Edit</a>
                                 </td>

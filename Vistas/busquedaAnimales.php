@@ -162,14 +162,15 @@ $datos = mysqli_query($animal->db, "SELECT * FROM animal");
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nombre Comun</th>
+                            <th>Nombre</th>
                             <th>Edad</th>
                             <th>Especie</th>
+							<th>Raza</th>
                             <th>Estado</th>
-                            <th>Ubicaci&#243;n</th>
-                            <th>Nombre Cient&#237;fico</th>
+                            <th>Esteril</th>
                             <th>Sexo</th>
-                            <th>Fecha de Ingreso</th>
+                            <th>Nacimiento</th>
+                            <th>Defuncion</th>
                             <th colspan="2"></th>
                         </tr>
                         </thead>
@@ -177,14 +178,15 @@ $datos = mysqli_query($animal->db, "SELECT * FROM animal");
                         <?php while ($row = mysqli_fetch_array($datos)) { ?>
                             <tr>
                                 <td><?php echo $row['ID']; ?></td>
-                                <td><?php echo $row['nombre_comun']; ?></td>
-                                <td><?php echo $row['edad']; ?></td>
-                                <td><?php echo $row['especie']; ?></td>
-                                <td><?php echo $row['estado']; ?></td>
-                                <td><?php echo $row['ubicacion']; ?></td>
-                                <td><?php echo $row['nombre_cientifico']; ?></td>
-                                <td><?php echo $row['sexo']; ?></td>
-                                <td><?php echo $row['fecha_de_ingreso']; ?></td>
+                                <td><?php echo $row['nombre_animal']; ?></td>
+                                <td><?php echo $row['edad_animal']; ?></td>
+                                <td><?php echo $row['especie_animal']; ?></td>
+								<td><?php echo $row['raza_animal']; ?></td>
+                                <td><?php echo $row['estado_animal']; ?></td>
+                                <td><?php echo $row['animal_esteril']; ?></td>
+                                <td><?php echo $row['sexo_animal']; ?></td>
+                                <td><?php echo $row['fecha_nacimiento']; ?></td>
+                                <td><?php echo $row['fecha_defuncion']; ?></td>
                                 <td>
                                     <a href="editarAnimal.php?edit=<?php echo $row['ID']; ?>" class="edit_btn" >Edit</a>
                                 </td>

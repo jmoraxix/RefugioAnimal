@@ -145,50 +145,24 @@ if (isset($_REQUEST['submit'])) {
 									<fieldset>
 										<div class="form-group">
 											<label>Nombre Completo</label>
-											<input name="nombre" class="form-control" placeholder="ejm: Jose Pablo Soto Garro" type="text">
+											<input name="nombre_adoptante" class="form-control" placeholder="ejm: Jose Pablo Soto Garro" type="text">
 										</div>
 										<div class="form-group">
 											<label>C&#233;dula</label>
-											<input name="cedula" class="form-control" placeholder="ejm: 1-1586-2459" type="text">
+											<input name="ced_adoptante" class="form-control" placeholder="ejm: 1-1586-2459" type="text">
 										</div>
 										<div class="form-group">
 											<label>Tel&#233;fono</label>
-											<input name="telefono" class="form-control" placeholder="ejm: 8515-1586" type="text">
+											<input name="num_telefono" class="form-control" placeholder="ejm: 8515-1586" type="text">
 										</div>
 										<div class="form-group">
 											<label>Correo</label>
-											<input name="correo" class="form-control" placeholder="ejm: jpablosg&#64;sinac.com" type="text">
+											<input name="correo_adoptante" class="form-control" placeholder="ejm: jpablosg&#64;sinac.com" type="text">
 										</div>
-										<div class="form-group">
-											<label>Centro de Manejo</label>
-												<input name="centro_manejo" class="form-control" placeholder="--select--" type="text" list="list">
-												<datalist id="list">
-													<option value="Alexandra"></option>
-													<option value="Alice"></option>
-													<option value="Anastasia"></option>
-													<option value="Avelina"></option>
-													<option value="Basilia"></option>
-													<option value="Beatrice"></option>
-													<option value="Cassandra"></option>
-												</datalist> 
-										</div>
-										<div class="form-group">
-											<label>Cargo</label>
-												<input name="cargo" class="form-control" placeholder="--select--" type="text" list="list">
-												<datalist id="list">
-													<option value="Admin"></option>
-													<option value="Empleado"></option>
-													<option value="Veterinario"></option>
-												</datalist> 
-										</div>
-										<div class="form-group">
-											<label>Nombre de Usuario</label>
-											<input name="usuario" class="form-control" placeholder="ejm: jpablosg" type="text">
-										</div>
-										<div class="form-group">
-											<label>Contrase&#241;a</label>
-											<input name="contrasena" class="form-control" placeholder="Ingrese su contrase&#241;a" type="password" value="">
-										</div>	
+										<div>
+			  								<label>Fecha de Nacimiento</label>
+			  								<div name="fecha_de_ingreso" class="bfh-datepicker" data-format="y-m-d" data-date="today"></div>
+			  							</div>
 									</fieldset>
 									<div>
 											<input class="btn btn-primary fa fa-save" type="submit" name="submit" value="Registrar" onclick="return(submitreg());location='busquedaAdoptante.php'">

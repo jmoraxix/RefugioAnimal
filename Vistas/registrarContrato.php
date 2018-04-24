@@ -141,28 +141,28 @@ if (isset($_REQUEST['submit'])) {
 			  					<form action="" method="post" name="reg">
 									<fieldset>
 										<div class="form-group">
-											<label>Nombre</label>
-											<input name="nombre" class="form-control" placeholder="ejm: Centro 1" type="text">
+											<label>ID</label>
+											<input name="id_contrato" class="form-control" placeholder="ejm: Centro 1" type="text">
 										</div>
 										<div class="form-group">
-											<label>Direcci&#243;n</label>
-											<input name="direccion" class="form-control" placeholder="ejm: 200m Norte de la guardia rural, Guadalupe" type="text">
+											<label>C&#233;dula Adoptante</label>
+											<input name="ADOPTANTE_ced_adoptante" class="form-control" placeholder="ejm: 200m Norte de la guardia rural, Guadalupe" type="text">
 										</div>
 										<div class="form-group">
-											<label>Capacidad de animales</label>
-											<input name="capacidad" class="form-control" placeholder="ejm: 50" type="text">
+											<label>Nombre del Animal</label>
+											<input name="ANIMAL_id_animal" class="form-control" placeholder="ejm: 50" type="text">
 										</div>
+										<div>
+			  								<label>Fecha de Contrato</label>
+			  								<div name="fecha_contrato" class="bfh-datepicker" data-format="y-m-d" data-date="today"></div>
+			  							</div>
 										<div class="form-group">
-											<label>Cantidad de personal</label>
-											<input name="cantidad_personal" class="form-control" placeholder="ejm: 10" type="text">
-										</div>
-										<div class="form-group">
-											<label>Persona a cargo</label>
-											<input name="persona_a_cargo" class="form-control" placeholder="ejm: Juan Solano Mora" type="text">
-										</div>
-										<div class="form-group">
-											<label>Tel&#233;fono</label>
-											<input name="telefono" class="form-control" placeholder="ejm: 8515-1586" type="text">
+											<label>Estado de Contrato</label>
+												<input name="estado_contrato" class="form-control" placeholder="--select--" type="text" list="list">
+												<datalist id="list2">
+													<option value="Aprobado"></option>
+													<option value="Rechazado"></option>
+												</datalist> 
 										</div>
 									</fieldset>
 									<div>

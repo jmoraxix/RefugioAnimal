@@ -122,7 +122,7 @@ if($_SESSION['login'] != true)
                     <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
                     <li  class="current"><a href="busquedaAdoptante.php"><i class="glyphicon glyphicon-stats"></i> Adoptantes </a></li>
                     <li><a href="busquedaAnimales.php"><i class="glyphicon glyphicon-list"></i> Animales </a></li>
-                    <li><a href="busquedaContratos.php"><i class="glyphicon glyphicon-tasks"></i> Contratos</a></li>
+                    <li><a href="busquedaContrato.php"><i class="glyphicon glyphicon-tasks"></i> Contratos</a></li>
                 </ul>
             </div>
         </div>
@@ -158,24 +158,20 @@ if($_SESSION['login'] != true)
                             <th>Nombre</th>
                             <th>Tel&#233;fono</th>
                             <th>Correo</th>
-                            <th>Usuario</th>
-                            <th>Centro de Manejo</th>
-                            <th>Cargo</th>
+                            <th>Fecha de Nacimiento</th>
                             <th colspan="2"></th>
                         </tr>
                         </thead>
 
                         <?php while ($row = mysqli_fetch_array($datos)) { ?>
                             <tr>
-                                <td><?php echo $row['id']; ?></td>
-                                <td><?php echo $row['nombre']; ?></td>
-                                <td><?php echo $row['telefono']; ?></td>
-                                <td><?php echo $row['correo']; ?></td>
-                                <td><?php echo $row['usuario']; ?></td>
-                                <td><?php echo $row['centro_de_manejo']; ?></td>
-                                <td><?php echo $row['cargo']; ?></td>
+                                <td><?php echo $row['ced_adoptante']; ?></td>
+                                <td><?php echo $row['nombre_adoptante']; ?></td>
+                                <td><?php echo $row['num_telefono']; ?></td>
+                                <td><?php echo $row['correo_adoptante']; ?></td>
+                                <td><?php echo $row['fecha_nac_adoptante']; ?></td>
                                 <td>
-                                    <a href="editarPersonal.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Edit</a>
+                                    <a href="editarAdoptante.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Edit</a>
                                 </td>
                             </tr>
                         <?php } ?>

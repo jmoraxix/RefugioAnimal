@@ -156,44 +156,51 @@ if (isset($_REQUEST['submit'])) {
 											<input name="ID" class="form-control"  type="text">
 										</div>
 										<div class="form-group">
-											<label>Nombre Com&#250;n</label>
-											<input name="nombre_comun" class="form-control" placeholder="ejm: Tortuga" type="text">
-										</div>
-										<div class="form-group">
-											<label>Nombre Cient&#237;fico</label>
-											<input name="nombre_cientifico" class="form-control" placeholder="ejm: Centro 1" type="text">
+											<label>Nombre</label>
+											<input name="nombre_animal" class="form-control" placeholder="ejm: Poncho" type="text">
 										</div>
 										<div class="form-group">
 											<label>Edad</label>
-											<input name="edad" class="form-control" placeholder="ejm: Dos a&#241;os" type="text">
+											<input name="edad_animal" class="form-control" placeholder="ejm: Dos a&#241;os" type="text">
 										</div>
 										<div class="form-group">
 											<label>Especie</label>
-											<input name="especie" class="form-control" placeholder="ejm: Dos a&#241;os" type="text">
+											<input name="especie_animal" class="form-control" placeholder="ejm: ??" type="text">
+										</div>
+										<div class="form-group">
+											<label>Raza</label>
+											<input name="raza_animal" class="form-control" placeholder="ejm: Husky" type="text">
 										</div>
 										<div class="form-group">
 											<label>Estado</label>
-											<input name="estado" class="form-control" placeholder="ejm: Delicado" type="text">
-										</div>
-										<div class="form-group">
-											<label>Centro Actual</label>
-												<input name="ubicacion" class="form-control" placeholder="--select--" type="text" list="list">
+												<input name="estado_animal" class="form-control" placeholder="--select--" type="text" list="list">
 												<datalist id="list">
-													<option value="Alexandra"></option>
-													<option value="Alice"></option>
-													<option value="Anastasia"></option>
-													<option value="Avelina"></option>
-													<option value="Basilia"></option>
-													<option value="Beatrice"></option>
-													<option value="Cassandra"></option>
+													<option value="Adoptado"></option>
+													<option value="No Adoptado"></option>
 												</datalist> 
 										</div>
 										<div class="form-group">
 											<label>Sexo</label>
-											<input name="sexo" class="form-control" placeholder="ejm: Masculino" type="text">
+												<input name="sexo_animal" class="form-control" placeholder="--select--" type="text" list="list">
+												<datalist id="list1">
+													<option value="Femenino"></option>
+													<option value="Masculino"></option>
+												</datalist> 
+										</div>
+										<div class="form-group">
+											<label>Esteril</label>
+												<input name="animal_esteril" class="form-control" placeholder="--select--" type="text" list="list">
+												<datalist id="list2">
+													<option value="Si"></option>
+													<option value="No"></option>
+												</datalist> 
 										</div>
 										<div>
-			  								<label>Fecha de Ingreso</label>
+			  								<label>Fecha de Nacimiento</label>
+			  								<div name="fecha_de_ingreso" class="bfh-datepicker" data-format="y-m-d" data-date="today"></div>
+			  							</div>
+																				<div>
+			  								<label>Fecha de Defunci&#243;n</label>
 			  								<div name="fecha_de_ingreso" class="bfh-datepicker" data-format="y-m-d" data-date="today"></div>
 			  							</div>
 									</fieldset>
