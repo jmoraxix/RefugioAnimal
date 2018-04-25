@@ -11,7 +11,7 @@
  */
 
 
-class centroDeManejo
+class contrato
 {
     public $db;
 
@@ -24,17 +24,15 @@ class centroDeManejo
 //        }
     }
 
-    public function registrar_centro_de_manejo($nombre, $direccion, $capacidad, $cantidad_personal,
-                                               $persona_a_cargo,$telefono)
+    public function registrar_centro_de_manejo($id_contrato, $ADOPTANTE_ced_adoptante, $ANIMAL_id_animal, $fecha_contrato, $estado_contrato)
     {
         //Validaciones
 
-        $ModeloCentroDeManejo = new ModeloCentroDeManejo();
-        $ModeloCentroDeManejo->ModeloCentroDeManejo($nombre, $direccion, $capacidad, $cantidad_personal,
-            $persona_a_cargo,$telefono);
+        $ModeloContrato = new ModeloContrato();
+        $ModeloContrato->ModeloContrato($id_contrato, $ADOPTANTE_ced_adoptante, $ANIMAL_id_animal, $fecha_contrato, $estado_contrato);
 
 
-        if($ModeloCentroDeManejo->isValidado())
+        if($ModeloContrato->isValidado())
         {
             $sql = "SELECT * FROM centro_de_manejo WHERE nombre='$nombre'";
             //checking if the username or email is available in db
@@ -64,20 +62,18 @@ class centroDeManejo
 
     }
 
-    public function editar($nombre_original,$nombre, $direccion, $capacidad, $cantidad_personal,
-                           $persona_a_cargo,$telefono)
+    public function editar($id_contrato, $ADOPTANTE_ced_adoptante, $ANIMAL_id_animal, $fecha_contrato, $estado_contrato)
     {
         //Validaciones
 
-        $ModeloCentroDeManejo = new ModeloCentroDeManejo();
-        $ModeloCentroDeManejo->ModeloCentroDeManejo($nombre, $direccion, $capacidad, $cantidad_personal,
-            $persona_a_cargo,$telefono);
+        $ModeloContrato = new ModeloContrato();
+        $ModeloContrato->ModeloContrato($id_contrato, $ADOPTANTE_ced_adoptante, $ANIMAL_id_animal, $fecha_contrato, $estado_contrato);
 
 
-        if($ModeloCentroDeManejo->isValidado())
+        if($ModeloContrato->isValidado())
         {
 
-            $sql1 = "UPDATE centro_de_manejo SET nombre= '$nombre',
+            $sql1 = "UPDATE contrato SET nombre= '$nombre',
                 direccion='$direccion', capacidad='$capacidad', 
                 cantidad_personal='$cantidad_personal', 
                 persona_a_cargo = '$persona_a_cargo',

@@ -1,9 +1,9 @@
 <?php
 include "db_config.php";
-include_once '../Modelos/ModeloPersonal.php';
-//include_once '/opt/lampp/htdocs/TESTDE/sinac-input-output/Modelos/ModeloPersonal.php';
+include_once '../Modelos/ModeloAdoptante.php';
 
-class personal
+
+class adoptante
 {
     public $db;
 
@@ -13,15 +13,13 @@ class personal
     }
 
     /*** registration process/proceso de registro ***/
-    public function registrar_personal($nombre, $centro_manejo, $cedula, $correo,
-                                       $telefono,$usuario,$contrasena,$cargo)
+    public function registrar_personal($nombre_adoptante, $ced_adoptante, $num_telefono, $correo_adoptante, $fecha_nac_adoptante)
     {
         //Validaciones
-        $ModeloPersonal = new ModeloPersonal();
-        $ModeloPersonal->ModeloPersonal($nombre, $centro_manejo, $cedula, $correo,
-            $telefono,$usuario,$contrasena,$cargo);
+        $ModeloAdoptante = new ModeloAdoptante();
+        $ModeloAdoptante->ModeloAdoptante($nombre_adoptante, $ced_adoptante, $num_telefono, $correo_adoptante, $fecha_nac_adoptante);
 
-        if($ModeloPersonal->isValidado())
+        if($ModeloAdoptante->isValidado())
         {
             $contrasena = password_hash($contrasena,PASSWORD_DEFAULT,['cost'=>10]);
             $sql = "SELECT * FROM personal WHERE id='$cedula'";
@@ -53,10 +51,10 @@ class personal
     /*** login process/inicio de sesion ***/
     public function login( $usuario, $contrasena)
     {
-        $ModeloPersonal = new ModeloPersonal();
+        $ModeloAdoptante = new ModeloAdoptante();
 
-        if($ModeloPersonal->ValidarUsuario($usuario)
-            AND $ModeloPersonal->ValidarContrasena($contrasena))
+        if($ModeloAdoptante->ValidarUsuario($usuario)
+            AND $ModeloAdoptante->ValidarContrasena($contrasena))
         {
             $record = mysqli_query($this->db, "SELECT * FROM personal WHERE usuario='$usuario'");
             $r = mysqli_fetch_array($record);
@@ -79,15 +77,13 @@ class personal
 
     }
 
-    public function editar($nombre, $centro_manejo, $cedula, $correo,
-                           $telefono,$usuario,$contrasena,$cargo)
+    public function editar($nombre_adoptante, $ced_adoptante, $num_telefono, $correo_adoptante, $fecha_nac_adoptante)
     {
         //Validaciones
-        $ModeloPersonal = new ModeloPersonal();
-        $ModeloPersonal->ValidarUpdate($nombre, $centro_manejo, $correo,
-            $telefono,$usuario,$contrasena,$cargo);
+        $ModeloAdoptante = new ModeloAdoptante();
+        $ModeloAdoptante->ValidarUpdate($nombre_adoptante, $ced_adoptante, $num_telefono, $correo_adoptante, $fecha_nac_adoptante);
 
-        if($ModeloPersonal->isValidado())
+        if($ModeloAdoptante->isValidado())
         {
             $sql1 = "UPDATE personal SET contrasena='$contrasena',
                 nombre='$nombre', telefono='$telefono', correo = '$correo',

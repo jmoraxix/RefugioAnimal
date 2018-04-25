@@ -28,7 +28,7 @@ if (isset($_REQUEST['logout'])){
 
 if (isset($_REQUEST['submit'])) {
     extract($_REQUEST);
-    $register = $adoptante->registrar_adoptante($nombre_adoptante, $ced_adoptante, $num_telefono, $correo_adoptante, $fecha_nac_adoptante  );
+    $register = $adoptante->registrar_adoptante($nombre_adoptante, $ced_adoptante, $num_telefono, $correo_adoptante, $fecha_nac_adoptante);
     if ($register) {
         // Registration Success
         echo '<div class="isa_success"><i class="fa fa-check"></i>El registro se ha completado exitosamente</div>';

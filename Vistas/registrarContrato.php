@@ -13,7 +13,7 @@
 session_start();
 
 include ('../Controladores/adoptante.php');
-include ('../Controladores/centroDeManejo.php');
+include ('../Controladores/contrato.php');
 //include ('messages.php');
 
 $adoptante = new adoptante();
@@ -32,7 +32,7 @@ $contrato = new contrato();
 
 if (isset($_REQUEST['submit'])) {
     extract($_REQUEST);
-    $register = $centro_manejo->registrar_centro_de_manejo();
+    $register = $centro_manejo->registrar_centro_de_manejo($id_contrato, $ADOPTANTE_ced_adoptante, $ANIMAL_id_animal, $fecha_contrato, $estado_contrato);
     if ($register) {
         // Registration Success
         echo '<div class="isa_success"><i class="fa fa-check"></i>El registro se ha completado exitosamente</div>';
