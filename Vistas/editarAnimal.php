@@ -14,9 +14,9 @@
 session_start();
 
 include_once '../Controladores/animal.php';
-include ('../Controladores/personal.php');
+include ('../Controladores/adoptante.php');
 
-$personal = new personal();
+$adoptante = new adoptante();
 $animal = new animal();
 
 if (isset($_REQUEST['logout'])){
@@ -37,14 +37,15 @@ if (isset($_GET['edit'])) {
     if (count($record) == 1 ) {
         $r = mysqli_fetch_array($record);
         $ID = $r['ID'];
-        $nombre_comun = $r['nombre_comun'];
-        $edad = $r['edad'];
-        $especie = $r['especie'];
-        $estado = $r['estado'];
-        $ubicacion = $r['ubicacion'];
-        $nombre_cientifico = $r['nombre_cientifico'];
-        $sexo = $r['sexo'];
-        $fecha_de_ingreso = $r['fecha_de_ingreso'];
+        $nombre_animal = $r['nombre_animal'];
+        $edad_animal = $r['edad_animal'];
+        $especie_animal = $r['especie_animal'];
+        $raza_animal = $r['raza_animal'];
+        $estado_animal = $r['estado_animal'];
+        $sexo_animal = $r['sexo_animal'];
+        $animal_esteril = $r['animal_esteril'];
+		$fecha_nacimiento = $r['fecha_nacimiento'];
+		$fecha_defuncion = $r['fecha_defuncion'];
 
 
     }
@@ -95,36 +96,32 @@ if (isset($_REQUEST['editar'])) {
                 alert( "Digite el ID del animal:." );
                 return false;
             }
-            else if(form.nombre_comun.value == ""){
+            else if(form.nombre_animal.value == ""){
                 alert( "Digite el nombre común del animal." );
                 return false;
             }
-            else if(form.edad.value == ""){
+            else if(form.edad_animal.value == ""){
                 alert( "Digite la edad del animal." );
                 return false;
             }
-            else if(form.especie.value == ""){
+            else if(form.especie_animal.value == ""){
                 alert( "Digite la especie del animal." );
                 return false;
             }
-            else if(form.estado.value == ""){
+            else if(form.raza_animal.value == ""){
+                alert( "Digite la raza del animal." );
+                return false;
+            }
+            else if(form.estado_animal.value == ""){
                 alert( "Digite el estado del animal." );
                 return false;
             }
-            else if(form.ubicacion.value == ""){
-                alert( "Digite la ubicacion del animal." );
+            else if(form.sexo_animal.value == ""){
+                alert( "Digite el sexo científico." );
                 return false;
             }
-            else if(form.nombre_cientifico.value == ""){
-                alert( "Digite el nombre científico." );
-                return false;
-            }
-            else if(form.sexo.value == ""){
-                alert( "Digite el sexo del animal." );
-                return false;
-            }
-            else if(form.fecha_de_ingreso.value == ""){
-                alert( "Digite la fecha de ingreso del animal." );
+            else if(form.animal_esteril.value == ""){
+                alert( "Defina si el animal es esteril." );
                 return false;
             }
         }
@@ -160,22 +157,9 @@ if (isset($_REQUEST['editar'])) {
                 <ul class="nav">
                     <!-- Main menu -->
                     <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
-                    <li><a href="busquedaPersonal.php"><i class="glyphicon glyphicon-stats"></i> Personal </a></li>
-                    <li><a href="registrar_personal.php"><i class="glyphicon glyphicon-calendar"></i> Registrar Personal </a></li>
-                    <li><a href="busquedaAnimales.php"><i class="glyphicon glyphicon-list"></i> Animales </a></li>
-                    <li class="current"><a href="registrarAnimal.php"><i class="glyphicon glyphicon-record"></i> Registrar Animal </a></li>
-                    <li><a href="entradas_salidas.php"><i class="glyphicon glyphicon-tasks"></i> Entradas y Salidas</a></li>
-                    <li class="submenu"">
-                         <a>
-                            <i class="glyphicon glyphicon-list"></i> Centros de Manejo
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                            <li><a href="busquedaCentroDeManejo.php">Ver Centros</a></li>
-                            <li><a href="registrar_centro_manejo.php">Registrar Centros</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="busquedaAdoptante.php"><i class="glyphicon glyphicon-stats"></i> Adoptantes </a></li>
+                    <li class="current"><a href="busquedaAnimales.php"><i class="glyphicon glyphicon-list"></i> Animales </a></li>
+                    <li><a href="busquedaContrato.php"><i class="glyphicon glyphicon-record"></i> Contratos </a></li>
                 </ul>
              </div>
           </div>
@@ -192,45 +176,49 @@ if (isset($_REQUEST['editar'])) {
 											<input name="ID" class="form-control"  type="text" value="<?php echo $ID; ?>">
 										</div>
 										<div class="form-group">
-											<label>Nombre Com&#250;n</label>
-											<input name="nombre_comun" class="form-control" placeholder="ejm: Tortuga" type="text" value="<?php echo $nombre_comun; ?>">
-										</div>
-										<div class="form-group">
-											<label>Nombre Cient&#237;fico</label>
-											<input name="nombre_cientifico" class="form-control" placeholder="ejm: Testudines" type="text" value="<?php echo $nombre_cientifico; ?>">
+											<label>Nombre</label>
+											<input name="nombre_animal" class="form-control" placeholder="ejm: Tortuga" type="text" value="<?php echo $nombre_animal; ?>">
 										</div>
 										<div class="form-group">
 											<label>Edad</label>
-											<input name="edad" class="form-control" placeholder="ejm: Dos a&#241;os" type="text" value="<?php echo $edad; ?>">
+											<input name="edad_animal" class="form-control" placeholder="ejm: Dos a&#241;os" type="text" value="<?php echo $edad_animal; ?>">
 										</div>
 										<div class="form-group">
 											<label>Especie</label>
-											<input name="especie" class="form-control" placeholder="ejm: Dos a&#241;os" type="text" value="<?php echo $especie; ?>">
+											<input name="especie_animal" class="form-control" placeholder="ejm: Dos a&#241;os" type="text" value="<?php echo $especie_animal; ?>">
 										</div>
 										<div class="form-group">
-											<label>Estado</label>
-											<input name="estado" class="form-control" placeholder="ejm: Delicado" type="text" value="<?php echo $estado; ?>">
+											<label>Raza</label>
+											<input name="raza_animal" class="form-control" placeholder="ejm: Husky" type="text" value="<?php echo $raza_animal; ?>">
+										</div>
+								        <div class="form-group">
+											<label>Estado</label></br>
+												<form>
+													<input type="radio" name="estado_animal" id="Adoptado" value="Si"><label id ="radio" for="Adoptado"> &ensp; Adoptado</label></br>
+													<input type="radio" name="estado_animal" id="No Adoptado" value="No"><label id ="radio" for="No Adoptado"> &ensp; No Adoptado</label></br>
+												</form>
+										</div>
+																				<div class="form-group">
+											<label>Sexo</label></br>
+												<form>
+													<input type="radio" name="sexo_animal" id="F" value="F" ><label id ="radio" for="Si"> &ensp; Femenino</label></br>
+													<input type="radio" name="sexo_animal" id="M" value="M"><label id ="radio" for="No"> &ensp; Masculino</label></br>
+												</form>
 										</div>
 										<div class="form-group">
-											<label>Centro Actual</label>
-												<input name="ubicacion" class="form-control" placeholder="--select--" type="text" list="list" value="<?php echo $ubicacion; ?>">
-												<datalist id="list">
-													<option value="Alexandra"></option>
-													<option value="Alice"></option>
-													<option value="Anastasia"></option>
-													<option value="Avelina"></option>
-													<option value="Basilia"></option>
-													<option value="Beatrice"></option>
-													<option value="Cassandra"></option>
-												</datalist> 
-										</div>
-										<div class="form-group">
-											<label>Sexo</label>
-											<input name="sexo" class="form-control" placeholder="ejm: Masculino" type="text" value="<?php echo $sexo; ?>">
+											<label>Esteril</label></br>
+												<form>
+													<input type="radio" name="animal_esteril" id="Si" value="Si" ><label id ="radio" for="Si"> &ensp; Si</label></br>
+													<input type="radio" name="animal_esteril" id="No" value="No"><label id ="radio" for="No"> &ensp; No</label></br>
+												</form>
 										</div>
 										<div>
-			  								<label>Fecha de Ingreso</label>
-			  								<div name="fecha_de_ingreso" class="bfh-datepicker" data-format="y-m-d" data-date="today"></div>
+			  								<label>Fecha de Nacimiento</label></br></br>
+			  								<input name="fecha_nacimiento" type="date" value="<?php echo $today ?>"></br></br>
+			  							</div>
+																				<div>
+			  								<label>Fecha de Defunci&#243;n</label></br></br>
+			  								<input name="fecha_defuncion" type="date" value="<?php echo $today ?>"></br></br>
 			  							</div>
 									</fieldset>
 									<div>
@@ -252,7 +240,7 @@ if (isset($_REQUEST['editar'])) {
          <div class="container">
          
             <div class="copy text-center">
-               Copyright 2014 <a href='#'>Website</a>
+               Facebook <a href='#'>Website</a>
             </div>
             
          </div>

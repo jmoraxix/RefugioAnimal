@@ -13,14 +13,14 @@
 session_start();
 
 include ('../Controladores/animal.php');
-include ('../Controladores/personal.php');
+include ('../Controladores/adoptante.php');
 
-$personal = new personal();
+$adoptante = new adoptante();
 $animal = new animal();
 
 if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
-    $personal->user_logout();
+    $adoptante->user_logout();
 }
 
 //if($_SESSION['login'] != true)
@@ -41,36 +41,40 @@ $datos = mysqli_query($animal->db, "SELECT * FROM animal");
 
         for (i = 0; i < tr.length; i++) {
             var td_ID = tr[i].getElementsByTagName("td")[0];
-            var td_nombre_comun = tr[i].getElementsByTagName("td")[1];
-            var td_edad = tr[i].getElementsByTagName("td")[2];
-            var td_especie = tr[i].getElementsByTagName("td")[3];
-            var td_estado = tr[i].getElementsByTagName("td")[4];
-            var td_ubicacion = tr[i].getElementsByTagName("td")[5];
-            var td_nombre_cientifico = tr[i].getElementsByTagName("td")[6];
-            var td_sexo = tr[i].getElementsByTagName("td")[7];
-            var td_fecha_de_ingreso = tr[i].getElementsByTagName("td")[8];
+            var td_nombre_animal = tr[i].getElementsByTagName("td")[1];
+            var td_edad_animal = tr[i].getElementsByTagName("td")[2];
+			var td_especie_animal = tr[i].getElementsByTagName("td")[3];
+            var td_raza_animal = tr[i].getElementsByTagName("td")[4];
+            var td_estado_animal = tr[i].getElementsByTagName("td")[5];
+			var td_sexo_animal = tr[i].getElementsByTagName("td")[6];
+            var td_animal_esteril = tr[i].getElementsByTagName("td")[8];
+            var td_fecha_nacimiento = tr[i].getElementsByTagName("td")[7];
+            var td_fecha_defuncion = tr[i].getElementsByTagName("td")[9];
 
             if(td_ID)
             {
                 var id = td_ID.innerHTML.toUpperCase();
-                var nombre_comun = td_nombre_comun.innerHTML.toUpperCase();
-                var edad = td_edad.innerHTML.toUpperCase();
-                var especie = td_especie.innerHTML.toUpperCase();
-                var estado = td_estado.innerHTML.toUpperCase();
-                var ubicacion = td_ubicacion.innerHTML.toUpperCase();
-                var nombre_cientifico = td_nombre_cientifico.innerHTML.toUpperCase();
-                var sexo = td_sexo.innerHTML.toUpperCase();
-                var fecha_de_ingreso = td_fecha_de_ingreso.innerHTML.toUpperCase();
+                var nombre_animal = td_nombre_animal.innerHTML.toUpperCase();
+                var edad_animal = td_edad_animal.innerHTML.toUpperCase();
+                var especie_animal = td_especie_animal.innerHTML.toUpperCase();
+				var raza_animal = td_raza_animal.innerHTML.toUpperCase();
+                var estado_animal = td_estado_animal.innerHTML.toUpperCase();
+				var sexo_animal = td_sexo_animal.innerHTML.toUpperCase();
+                var animal_esteril = td_animal_esteril.innerHTML.toUpperCase();
+                var fecha_nacimiento = td_fecha_nacimiento.innerHTML.toUpperCase();
+                var fecha_defuncion = td_fecha_defuncion.innerHTML.toUpperCase();
 
                 if (id.indexOf(filter) > -1
-                    || nombre_comun.indexOf(filter) > -1
-                    || edad.indexOf(filter) > -1
-                    || especie.indexOf(filter) > -1
-                    || estado.indexOf(filter) > -1
-                    || ubicacion.indexOf(filter) > -1
-                    || nombre_cientifico.indexOf(filter) > -1
-                    || sexo.indexOf(filter) > -1
-                    || fecha_de_ingreso.indexOf(filter) > -1)
+					|| id.indexOf(filter) > -1
+                    || nombre_animal.indexOf(filter) > -1
+                    || edad_animal.indexOf(filter) > -1
+                    || especie_animal.indexOf(filter) > -1
+					|| raza_animal.indexOf(filter) > -1
+                    || estado_animal.indexOf(filter) > -1
+                    || sexo_animal.indexOf(filter) > -1
+                    || animal_esteril.indexOf(filter) > -1
+                    || fecha_nacimiento.indexOf(filter) > -1
+                    || fecha_defuncion.indexOf(filter) > -1)
                 {
                     tr[i].style.display = "";
                 }
@@ -86,7 +90,7 @@ $datos = mysqli_query($animal->db, "SELECT * FROM animal");
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Adoptantes</title>
+    <title>Animales</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- jQuery UI -->
     <link href="https://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css" rel="stylesheet" media="screen">

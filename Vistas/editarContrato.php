@@ -13,14 +13,14 @@
 
 session_start();
 
-include ('../Controladores/personal.php');
-include ('../Controladores/centroDeManejo.php');
+include ('../Controladores/adoptante.php');
+include ('../Controladores/contrato.php');
 
-$personal = new personal();
-$centro_manejo = new centroDeManejo();
+$adoptante = new adoptante();
+$contrato = new contrato();
 if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
-    $personal->user_logout();
+    $adoptante->user_logout();
 }
 
 //if($_SESSION['login'] != true)
@@ -31,19 +31,15 @@ if (isset($_REQUEST['logout'])){
 if (isset($_GET['edit'])) {
     $nombre = $_GET['edit'];
 
-    $record = mysqli_query($centro_manejo->db, "SELECT * FROM centro_de_manejo WHERE nombre='$nombre'");
+    $record = mysqli_query($contrato->db, "SELECT * FROM centro_de_manejo WHERE nombre='$nombre'");
 
     if (count($record) == 1 ) {
         $r = mysqli_fetch_array($record);
-        $nombre_original = $r['nombre'];
-        $nombre = $r['nombre'];
-        $direccion = $r['direccion'];
-        $capacidad = $r['capacidad'];
-        $cantidad_personal = $r['cantidad_personal'];
-        $persona_cargo = $r['persona_a_cargo'];
-        $telefono = $r['telefono'];
-
-
+        $id_contrato = $r['id_contrato'];
+        $ADOPTANTE_ced_adoptante = $r['ADOPTANTE_ced_adoptante'];
+        $ANIMAL_id_animal = $r['ANIMAL_id_animal'];
+        $fecha_contrato = $r['fecha_contrato'];
+        $estado_contrato = $r['estado_contrato'];
     }
 
 }
@@ -87,28 +83,24 @@ if (isset($_REQUEST['editar'])) {
     <script language="javascript" type="text/javascript">
         function submitreg() {
             var form = document.reg;
-            if(form.nombre.value == ""){
-                alert( "Digite un nombre:." );
+            if(form.id_contrato.value == ""){
+                alert( "Digite un id:." );
                 return false;
             }
-            else if(form.direccion.value == ""){
-                alert( "Digite una direccion." );
+            else if(form.ADOPTANTE_ced_adoptante.value == ""){
+                alert( "Ingrese un adoptante." );
                 return false;
             }
-            else if(form.cedula.capacidad == ""){
-                alert( "Digite la capacidad de animales que pueden alojar." );
+            else if(form.ANIMAL_id_animal.capacidad == ""){
+                alert( "Ingrese un animal." );
                 return false;
             }
-            else if(form.cantidad.value == ""){
-                alert( "Digite la cantidad de personal que puede alojar." );
+            else if(form.fecha_contrato.value == ""){
+                alert( "Digite la fecha del contrato." );
                 return false;
             }
-            else if(form.persona_a_cargo.value == ""){
-                alert( "Digite el nombre de la persona a cargo." );
-                return false;
-            }
-            else if(form.telefono.value == ""){
-                alert( "Digite un numero de telefono" );
+            else if(form.estado_contrato.value == ""){
+                alert( "Seleccione el estado del contrato." );
                 return false;
             }
         }
@@ -144,56 +136,42 @@ if (isset($_REQUEST['editar'])) {
                 <ul class="nav">
                     <!-- Main menu -->
                     <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
-                    <li><a href="busquedaPersonal.php"><i class="glyphicon glyphicon-stats"></i> Personal </a></li>
-                    <li><a href="registrar_personal.php"><i class="glyphicon glyphicon-calendar"></i> Registrar Personal </a></li>
+                    <li><a href="busquedaAdoptante.php"><i class="glyphicon glyphicon-stats"></i> Adoptantes </a></li>
                     <li><a href="busquedaAnimales.php"><i class="glyphicon glyphicon-list"></i> Animales </a></li>
-                    <li><a href="registrarAnimal.php"><i class="glyphicon glyphicon-record"></i> Registrar Animal </a></li>
-                    <li><a href="entradas_salidas.php"><i class="glyphicon glyphicon-tasks"></i> Entradas y Salidas</a></li>
-                    <li class="current submenu">
-                         <a>
-                            <i class="glyphicon glyphicon-list"></i> Centros de Manejo
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                         	<li><a href="busquedaCentroDeManejo.php">Ver Centros</a></li>
-                            <li class="current"><a href="registrar_centro_manejo.php">Registrar Centros</a></li>
-                        </ul>
-                    </li>
+                    <li  class="current"><a href="busquedaContratos.php"><i class="glyphicon glyphicon-tasks"></i> Contratos</a></li>
                 </ul>
              </div>
           </div>
           <div class="col-md-6">
 	  					<div class="content-box-large">
 			  				<div class="panel-heading">
-					            <div class="panel-title">Registro Centro de Manejo</div>
+					            <div class="panel-title">Registro Contratos</div>
 					        </div>
 			  				<div class="panel-body">
 			  					<form action="" method="post" name="reg">
 									<fieldset>
 										<div class="form-group">
-											<label>Nombre</label>
-											<input name="nombre" class="form-control" placeholder="ejm: Centro 1" type="text" value="<?php echo $nombre; ?>">
+											<label>ID</label>
+											<input name="id_contrato" class="form-control" placeholder="ejm: Centro 1" type="text" value="<?php echo $id_contrato; ?>">
 										</div>
 										<div class="form-group">
-											<label>Direcci&#243;n</label>
-											<input name="direccion" class="form-control" placeholder="ejm: 200m Norte de la guardia rural, Guadalupe" type="text" value="<?php echo $direccion; ?>">
+											<label>C&#233;dula Adoptante</label>
+											<input name="ADOPTANTE_ced_adoptante" class="form-control" placeholder="ejm: 200m Norte de la guardia rural, Guadalupe" type="text" value="<?php echo $ADOPTANTE_ced_adoptante; ?>">
 										</div>
 										<div class="form-group">
-											<label>Capacidad de animales</label>
-											<input name="capacidad" class="form-control" placeholder="ejm: 50" type="text" value="<?php echo $capacidad; ?>">
+											<label>Nombre del Animal</label>
+											<input name="ANIMAL_id_animal" class="form-control" placeholder="ejm: 50" type="text" value="<?php echo $ANIMAL_id_animal; ?>">
 										</div>
+										<div>
+			  								<label>Fecha de Contrato</label></br></br>
+			  								<input type="date" name="fecha_contrato" value="<?php echo $today ?>"></br></br>
+			  							</div>
 										<div class="form-group">
-											<label>Cantidad de personal</label>
-											<input name="cantidad_personal" class="form-control" placeholder="ejm: 10" type="text" value="<?php echo $cantidad_personal; ?>">
-										</div>
-										<div class="form-group">
-											<label>Persona a cargo</label>
-											<input name="persona_a_cargo" class="form-control" placeholder="ejm: Juan Solano Mora" type="text" value="<?php echo $persona_cargo; ?>">
-										</div>
-										<div class="form-group">
-											<label>Tel&#233;fono</label>
-											<input name="telefono" class="form-control" placeholder="ejm: 8515-1586" type="text" value="<?php echo $telefono; ?>">
+											<label>Estado de Contrato</label></br>
+												<form>
+													<input type="radio" name="estado_contrato" id="Aprobado" value="Si" checked><label id ="radio" for="Aprobado"> &ensp; Aprobado</label></br>
+													<input type="radio" name="estado_contrato" id="Rechazado" value="No"><label id ="radio" for="Rechazado"> &ensp; Rechazado</label></br>
+												</form> 
 										</div>
 									</fieldset>
 									<div>
@@ -215,7 +193,7 @@ if (isset($_REQUEST['editar'])) {
          <div class="container">
          
             <div class="copy text-center">
-               Copyright 2014 <a href='#'>Website</a>
+               Facebook <a href='#'>Website</a>
             </div>
             
          </div>

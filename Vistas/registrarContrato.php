@@ -12,15 +12,15 @@
 
 session_start();
 
-include ('../Controladores/personal.php');
+include ('../Controladores/adoptante.php');
 include ('../Controladores/centroDeManejo.php');
 //include ('messages.php');
 
-$personal = new personal();
+$adoptante = new adoptante();
 
 if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
-    $personal->user_logout();
+    $adoptante->user_logout();
 }
 
 //if($_SESSION['login'] != true)
@@ -28,12 +28,11 @@ if (isset($_REQUEST['logout'])){
 //    header("location: login.php");
 //}
 
-$centro_manejo = new centroDeManejo();
+$contrato = new contrato();
 
 if (isset($_REQUEST['submit'])) {
     extract($_REQUEST);
-    $register = $centro_manejo->registrar_centro_de_manejo( $nombre, $direccion, $capacidad, $cantidad_personal,
-        $persona_a_cargo,$telefono);
+    $register = $centro_manejo->registrar_centro_de_manejo();
     if ($register) {
         // Registration Success
         echo '<div class="isa_success"><i class="fa fa-check"></i>El registro se ha completado exitosamente</div>';
@@ -75,31 +74,26 @@ echo $today." <br>";
 
         function submitreg() {
             var form = document.reg;
-            if(form.nombre.value == ""){
-                alert( "Digite un nombre:." );
+            if(form.id_contrato.value == ""){
+                alert( "Digite un id:." );
                 return false;
             }
-            else if(form.direccion.value == ""){
-                alert( "Digite una direccion." );
+            else if(form.ADOPTANTE_ced_adoptante.value == ""){
+                alert( "Ingrese un adoptante." );
                 return false;
             }
-            else if(form.cedula.capacidad == ""){
-                alert( "Digite la capacidad de animales que pueden alojar." );
+            else if(form.ANIMAL_id_animal.capacidad == ""){
+                alert( "Ingrese un animal." );
                 return false;
             }
-            else if(form.cantidad.value == ""){
-                alert( "Digite la cantidad de personal que puede alojar." );
+            else if(form.fecha_contrato.value == ""){
+                alert( "Digite la fecha del contrato." );
                 return false;
             }
-            else if(form.persona_a_cargo.value == ""){
-                alert( "Digite el nombre de la persona a cargo." );
+            else if(form.estado_contrato.value == ""){
+                alert( "Seleccione el estado del contrato." );
                 return false;
             }
-            else if(form.telefono.value == ""){
-                alert( "Digite un numero de telefono" );
-                return false;
-            }
-        }
     </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -163,12 +157,11 @@ echo $today." <br>";
 			  								<input type="date" name="fecha_contrato" value="<?php echo $today ?>"></br></br>
 			  							</div>
 										<div class="form-group">
-											<label>Estado de Contrato</label>
-												<input name="estado_contrato" class="form-control" placeholder="--select--" type="text" list="list">
-												<datalist id="list2">
-													<option value="Aprobado"></option>
-													<option value="Rechazado"></option>
-												</datalist> 
+											<label>Estado de Contrato</label></br>
+												<form>
+													<input type="radio" name="estado_contrato" id="Aprobado" value="Si" checked><label id ="radio" for="Aprobado"> &ensp; Aprobado</label></br>
+													<input type="radio" name="estado_contrato" id="Rechazado" value="No"><label id ="radio" for="Rechazado"> &ensp; Rechazado</label></br>
+												</form> 
 										</div>
 									</fieldset>
 									<div>
@@ -190,7 +183,7 @@ echo $today." <br>";
          <div class="container">
          
             <div class="copy text-center">
-               Copyright 2014 <a href='#'>Website</a>
+               Facebook <a href='#'>Website</a>
             </div>
             
          </div>

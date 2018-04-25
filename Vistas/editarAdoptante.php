@@ -57,6 +57,10 @@ if (isset($_REQUEST['editar'])) {
        echo '<div class="isa_error"><i class="fa fa-times-circle"></i>Error al realizar los cambios, por favor asegurese de que todos los valores son validos</div>';
     }
 }
+  $timezone = "Europe/Oslo";
+  date_default_timezone_set($timezone);
+  $today = date("d.m.Y");
+echo $today." <br>";
 ?>
 
 <!DOCTYPE html>
@@ -167,7 +171,7 @@ if (isset($_REQUEST['editar'])) {
 										</div>
 										<div>
 			  								<label>Fecha de Nacimiento</label>
-			  								<input name="fecha_nac_adoptante" type="date" value="<?php echo $fecha_nac_adoptante ?>"></br></br>
+			  								<input name="fecha_nac_adoptante" type="date" value="<?php echo $today ?>"></br></br>
 			  							</div>
 									</fieldset>
 									<div>

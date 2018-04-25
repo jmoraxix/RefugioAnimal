@@ -37,6 +37,10 @@ if (isset($_REQUEST['submit'])) {
         echo '<div class="isa_error"><i class="fa fa-times-circle"></i>Error al realizar el registro, por favor asegurese de que todos los valores son validos</div>';
     }
 }
+  $timezone = "Europe/Oslo";
+  date_default_timezone_set($timezone);
+  $today = date("d.m.Y");
+echo $today." <br>";
 ?>
 
 <!DOCTYPE html>

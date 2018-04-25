@@ -12,13 +12,13 @@
 
 session_start();
 
-include ('../Controladores/personal.php');
+include ('../Controladores/adoptante.php');
 
-$personal = new personal();
+$adoptante = new adoptante();
 
 /*if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
-    $personal->user_logout();
+    $adoptante->user_logout();
 }
 
 if($_SESSION['login'] != true)
@@ -26,43 +26,40 @@ if($_SESSION['login'] != true)
     header("location: login.php");
 }*/
 
-//$datos = mysqli_query($personal->db, "SELECT * FROM personal");
+//$datos = mysqli_query($adoptante->db, "SELECT * FROM adoptante");
 ?>
 
 <script>
     function search() {
 
-        var input = document.getElementById("personal_a_buscar");
+        var input = document.getElementById("adoptante_a_buscar");
         var filter = input.value.toUpperCase();
-        var table = document.getElementById("Tabla_De_Personal");
+        var table = document.getElementById("Tabla_De_Adoptante");
         var tr = table.getElementsByTagName("tr");
 
         for (i = 0; i < tr.length; i++) {
-            var td_id = tr[i].getElementsByTagName("td")[0];
-            var td_nombre = tr[i].getElementsByTagName("td")[1];
-            var td_telefono = tr[i].getElementsByTagName("td")[2];
-            var td_correo = tr[i].getElementsByTagName("td")[3];
-            var td_usuario = tr[i].getElementsByTagName("td")[4];
+            var td_nombre_adoptante= tr[i].getElementsByTagName("td")[0];
+            var td_ced_adoptante = tr[i].getElementsByTagName("td")[1];
+            var td_num_telefono = tr[i].getElementsByTagName("td")[2];
+            var td_correo_adoptante = tr[i].getElementsByTagName("td")[3];
+            var td_fecha_nac_adoptante = tr[i].getElementsByTagName("td")[4];
             var td_centro_manejo = tr[i].getElementsByTagName("td")[5];
             var td_cargo = tr[i].getElementsByTagName("td")[6];
 
             if(td_id || td_nombre || td_usuario)
             {
-                var id = td_id.innerHTML.toUpperCase();
-                var nombre = td_nombre.innerHTML.toUpperCase();
-                var telefono = td_telefono.innerHTML.toUpperCase();
-                var correo = td_correo.innerHTML.toUpperCase();
-                var usuario = td_usuario.innerHTML.toUpperCase();
-                var centro_manejo = td_centro_manejo.innerHTML.toUpperCase();
-                var cargo = td_cargo.innerHTML.toUpperCase();
+                var nombre_adoptante = td_nombre_adoptante.innerHTML.toUpperCase();
+                var ced_adoptante = td_ced_adoptante.innerHTML.toUpperCase();
+                var num_telefono = td_num_telefono.innerHTML.toUpperCase();
+                var correo_adoptante = td_correo.innerHTML.toUpperCase();
+                var fecha_nac_adoptante = td_fecha_nac_adoptante.innerHTML.toUpperCase();
 
                 if (id.indexOf(filter) > -1
-                    || nombre.indexOf(filter) > -1
-                    || telefono.indexOf(filter) > -1
-                    || correo.indexOf(filter) > -1
-                    || usuario.indexOf(filter) > -1
-                    || centro_manejo.indexOf(filter) > -1
-                    || cargo.indexOf(filter) > -1)
+                    || nombre_adoptante.indexOf(filter) > -1
+					|| ced_adoptante.indexOf(filter) > -1
+                    || num_telefono.indexOf(filter) > -1
+                    || correo_adoptante.indexOf(filter) > -1
+                    || fecha_nac_adoptante.indexOf(filter) > -1
                 {
                     tr[i].style.display = "";
                 }

@@ -13,14 +13,14 @@
 session_start();
 
 include_once '../Controladores/animal.php';
-include ('../Controladores/personal.php');
+include ('../Controladores/adoptante.php');
 
-$personal = new personal();
+$adoptante = new adoptante();
 $animal = new animal();
 
 if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
-    $personal->user_logout();
+    $adoptante->user_logout();
 }
 
 //if($_SESSION['login'] != true)
@@ -31,8 +31,7 @@ if (isset($_REQUEST['logout'])){
 
 if (isset($_REQUEST['submit'])) {
     extract($_REQUEST);
-    $register = $animal->registrar_animal( $ID, $nombre_comun, $edad, $especie,
-        $estado,$ubicacion,$nombre_cientifico,$sexo,$fecha_de_ingreso);
+    $register = $animal->registrar_animal( $ID, $nombre_animal, $edad_animal, $especie_animal, $raza_animal, $estado_animal, $sexo_animal, $animal_esteril, $fecha_nacimiento, $fecha_defuncion);
     if ($register) {
 // Registration Success
         echo '<div class="isa_success"><i class="fa fa-check"></i>El registro se ha completado exitosamente</div>';
@@ -41,6 +40,11 @@ if (isset($_REQUEST['submit'])) {
         echo '<div class="isa_error"><i class="fa fa-times-circle"></i>Error al realizar el registro, por favor asegurese de que todos los valores son validos</div>';
     }
 }
+
+  $timezone = "Europe/Oslo";
+  date_default_timezone_set($timezone);
+  $today = date("d.m.Y");
+echo $today." <br>";
 ?>
 
 <!DOCTYPE html>
@@ -72,36 +76,32 @@ if (isset($_REQUEST['submit'])) {
                 alert( "Digite el ID del animal:." );
                 return false;
             }
-            else if(form.nombre_comun.value == ""){
+            else if(form.nombre_animal.value == ""){
                 alert( "Digite el nombre común del animal." );
                 return false;
             }
-            else if(form.edad.value == ""){
+            else if(form.edad_animal.value == ""){
                 alert( "Digite la edad del animal." );
                 return false;
             }
-            else if(form.especie.value == ""){
+            else if(form.especie_animal.value == ""){
                 alert( "Digite la especie del animal." );
                 return false;
             }
-            else if(form.estado.value == ""){
+            else if(form.raza_animal.value == ""){
+                alert( "Digite la raza del animal." );
+                return false;
+            }
+            else if(form.estado_animal.value == ""){
                 alert( "Digite el estado del animal." );
                 return false;
             }
-            else if(form.ubicacion.value == ""){
-                alert( "Digite la ubicacion del animal." );
+            else if(form.sexo_animal.value == ""){
+                alert( "Digite el sexo científico." );
                 return false;
             }
-            else if(form.nombre_cientifico.value == ""){
-                alert( "Digite el nombre científico." );
-                return false;
-            }
-            else if(form.sexo.value == ""){
-                alert( "Digite el sexo del animal." );
-                return false;
-            }
-            else if(form.fecha_de_ingreso.value == ""){
-                alert( "Digite la fecha de ingreso del animal." );
+            else if(form.animal_esteril.value == ""){
+                alert( "Defina si el animal es esteril." );
                 return false;
             }
         }
@@ -172,12 +172,11 @@ if (isset($_REQUEST['submit'])) {
 											<input name="raza_animal" class="form-control" placeholder="ejm: Husky" type="text">
 										</div>
 										<div class="form-group">
-											<label>Estado</label>
-												<input name="estado_animal" class="form-control" placeholder="--select--" type="text" list="list">
-												<datalist id="list">
-													<option value="Adoptado"></option>
-													<option value="No Adoptado"></option>
-												</datalist> 
+											<label>Estado</label></br>
+												<form>
+													<input type="radio" name="estado_animal" id="Adoptado" value="Si" checked><label id ="radio" for="Adoptado"> &ensp; Adoptado</label></br>
+													<input type="radio" name="estado_animal" id="No Adoptado" value="No"><label id ="radio" for="No Adoptado"> &ensp; No Adoptado</label></br>
+												</form>
 										</div>
 										<div class="form-group">
 											<label>Sexo</label></br>
@@ -221,7 +220,7 @@ if (isset($_REQUEST['submit'])) {
          <div class="container">
          
             <div class="copy text-center">
-               Copyright 2014 <a href='#'>Website</a>
+               Facebook <a href='#'>Website</a>
             </div>
             
          </div>

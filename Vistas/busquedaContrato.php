@@ -12,57 +12,55 @@
 
 session_start();
 
-include ('../Controladores/personal.php');
+include ('../Controladores/adoptante.php');
 
-include ('../Controladores/centroDeManejo.php');
+include ('../Controladores/contrato.php');
 
-$personal = new personal();
+$adoptante = new adoptante();
 
 if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
-    $personal->user_logout();
+    $adoptante->user_logout();
 }
 
 if($_SESSION['login'] != true)
 {
     header("location: login.php");
 }
-$centro_manejo = new centroDeManejo();
+$contrato = new contrato();
 
-//$datos = mysqli_query($centro_manejo->db, "SELECT * FROM centro_de_manejo");
+//$datos = mysqli_query($contrato->db, "SELECT * FROM centro_de_manejo");
 ?>
 
 <script>
     function search() {
 
-        var input = document.getElementById("centro_a_buscar");
+        var input = document.getElementById("contrato_a_buscar");
         var filter = input.value.toUpperCase();
-        var table = document.getElementById("Tabla_De_Centros");
+        var table = document.getElementById("Tabla_De_Contratos");
         var tr = table.getElementsByTagName("tr");
 
         for (i = 0; i < tr.length; i++) {
-            var td_nombre = tr[i].getElementsByTagName("td")[0];
-            var td_direccion = tr[i].getElementsByTagName("td")[1];
-            var td_capacidad = tr[i].getElementsByTagName("td")[2];
-            var td_cantidad_personal = tr[i].getElementsByTagName("td")[3];
-            var td_persona_a_cargo = tr[i].getElementsByTagName("td")[4];
-            var td_telefono = tr[i].getElementsByTagName("td")[5];
+            var td_id_contrato = tr[i].getElementsByTagName("td")[0];
+            var td_ADOPTANTE_ced_adoptante = tr[i].getElementsByTagName("td")[1];
+            var td_ANIMAL_id_animal = tr[i].getElementsByTagName("td")[2];
+            var td_fecha_contrato = tr[i].getElementsByTagName("td")[3];
+            var td_estado_contrato = tr[i].getElementsByTagName("td")[4];
 
             if(td_nombre)
             {
-                var nombre = td_nombre.innerHTML.toUpperCase();
-                var direccion = td_direccion.innerHTML.toUpperCase();
-                var capacidad = td_capacidad.innerHTML.toUpperCase();
-                var cantidad_personal = td_cantidad_personal.innerHTML.toUpperCase();
-                var persona_a_cargo = td_persona_a_cargo.innerHTML.toUpperCase();
-                var telefono = td_telefono.innerHTML.toUpperCase();
+                var id_contrato = td_id_contrato.innerHTML.toUpperCase();
+                var ADOPTANTE_ced_adoptante = td_ADOPTANTE_ced_adoptante.innerHTML.toUpperCase();
+                var ANIMAL_id_animal = td_ANIMAL_id_animal.innerHTML.toUpperCase();
+                var fecha_contrato = td_fecha_contrato.innerHTML.toUpperCase();
+                var estado_contrato = td_estado_contrato.innerHTML.toUpperCase();
 
                 if (nombre.indexOf(filter) > -1
-                    || direccion.indexOf(filter) > -1
-                    || capacidad.indexOf(filter) > -1
-                    || cantidad_personal.indexOf(filter) > -1
-                    || persona_a_cargo.indexOf(filter) > -1
-                    || telefono.indexOf(filter) > -1)
+                    || id_contrato.indexOf(filter) > -1
+                    || ADOPTANTE_ced_adoptante.indexOf(filter) > -1
+                    || ANIMAL_id_animal.indexOf(filter) > -1
+                    || fecha_contrato.indexOf(filter) > -1
+                    || estado_contrato.indexOf(filter) > -1)
                 {
                     tr[i].style.display = "";
                 }
@@ -171,7 +169,7 @@ $centro_manejo = new centroDeManejo();
                                 <td><?php echo $row['fecha_contrato']; ?></td>
                                 <td><?php echo $row['estado_contrato']; ?></td>
                                 <td>
-                                    <a href="editarCentroDeManejo.php?edit=<?php echo $row['nombre']; ?>" class="edit_btn" >Edit</a>
+                                    <a href="editarContrato.php?edit=<?php echo $row['nombre']; ?>" class="edit_btn" >Edit</a>
                                 </td>
                             </tr>
                         <?php } ?>
