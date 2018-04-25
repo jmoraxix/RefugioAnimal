@@ -12,12 +12,12 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-include_once '../Controladores/personal.php';
+include_once '../Controladores/adoptante.php';
 
-$personal = new personal();
+$adoptante = new adoptante();
 if (isset($_REQUEST['submit'])){
     extract($_REQUEST);
-    $login = $personal->login( $usuario, $contrasena);
+    $login = $adoptante->login($usuario, $contrasena);
     if ($login) {;
         header("location: index.php");
     } else {
