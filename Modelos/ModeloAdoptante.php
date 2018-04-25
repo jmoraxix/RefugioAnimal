@@ -10,7 +10,7 @@
  * Primer cuatrimestre, 2018
  */
 
-class ModeloPersonal
+class ModeloAdoptante
 {
     private $validado = false;
 
@@ -19,7 +19,7 @@ class ModeloPersonal
 
     }
 
-    public function ModeloPersonal($nombre, $centro_manejo, $cedula, $correo,
+    public function ModeloAdoptante($nombre, $centro_manejo, $cedula, $correo,
                                    $telefono,$usuario,$contrasena,$cargo)
     {
         $NombreValidado = $this->ValidarNombre($nombre);
@@ -143,7 +143,7 @@ class ModeloPersonal
 
     public function ValidarUsuario($usuario)
     {
-        if(strlen($usuario)>30)
+        if(strlen($usuario)> 15)
         {
             return false;
         }
@@ -155,7 +155,7 @@ class ModeloPersonal
 
     public function ValidarContrasena($contrasena)
     {
-        if(strlen($contrasena)>16)
+        if(strlen($contrasena)>20)
         {
             return false;
         }
