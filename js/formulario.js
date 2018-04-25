@@ -1,4 +1,7 @@
-  $(document).ready(function() {
+
+$( "#datepicker" ).datepicker();
+$("#icon").click(function() { $("#datepicker").datepicker( "show" );}) 
+ $(document).ready(function() {
     $('#contact_form').bootstrapValidator({
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
         feedbackIcons: {

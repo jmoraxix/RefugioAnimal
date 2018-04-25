@@ -42,6 +42,11 @@ if (isset($_REQUEST['submit'])) {
         echo '<div class="isa_error"><i class="fa fa-times-circle"></i>Error al realizar el registro, por favor asegurese de que todos los valores son validos</div>';
     }
 }
+
+  $timezone = "Europe/Oslo";
+  date_default_timezone_set($timezone);
+  $today = date("d.m.Y");
+echo $today." <br>";
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +72,7 @@ if (isset($_REQUEST['submit'])) {
 
 
     <script language="javascript" type="text/javascript">
+
         function submitreg() {
             var form = document.reg;
             if(form.nombre.value == ""){
@@ -153,8 +159,8 @@ if (isset($_REQUEST['submit'])) {
 											<input name="ANIMAL_id_animal" class="form-control" placeholder="ejm: 50" type="text">
 										</div>
 										<div>
-			  								<label>Fecha de Contrato</label>
-			  								<div name="fecha_contrato" class="bfh-datepicker" data-format="y-m-d" data-date="today"></div>
+			  								<label>Fecha de Contrato</label></br></br>
+			  								<input type="date" name="fecha_contrato" value="<?php echo $today ?>"></br></br>
 			  							</div>
 										<div class="form-group">
 											<label>Estado de Contrato</label>

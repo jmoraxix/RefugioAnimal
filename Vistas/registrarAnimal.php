@@ -180,28 +180,26 @@ if (isset($_REQUEST['submit'])) {
 												</datalist> 
 										</div>
 										<div class="form-group">
-											<label>Sexo</label>
-												<input name="sexo_animal" class="form-control" placeholder="--select--" type="text" list="list">
-												<datalist id="list1">
-													<option value="Femenino"></option>
-													<option value="Masculino"></option>
-												</datalist> 
+											<label>Sexo</label></br>
+												<form>
+													<input type="radio" name="sexo_animal" id="F" value="F" checked><label id ="radio" for="Si"> &ensp; Femenino</label></br>
+													<input type="radio" name="sexo_animal" id="M" value="M"><label id ="radio" for="No"> &ensp; Masculino</label></br>
+												</form>
 										</div>
 										<div class="form-group">
-											<label>Esteril</label>
-												<input name="animal_esteril" class="form-control" placeholder="--select--" type="text" list="list">
-												<datalist id="list2">
-													<option value="Si"></option>
-													<option value="No"></option>
-												</datalist> 
+											<label>Esteril</label></br>
+												<form>
+													<input type="radio" name="animal_esteril" id="Si" value="Si" checked><label id ="radio" for="Si"> &ensp; Si</label></br>
+													<input type="radio" name="animal_esteril" id="No" value="No"><label id ="radio" for="No"> &ensp; No</label></br>
+												</form>
 										</div>
 										<div>
-			  								<label>Fecha de Nacimiento</label>
-			  								<div name="fecha_de_ingreso" class="bfh-datepicker" data-format="y-m-d" data-date="today"></div>
+			  								<label>Fecha de Nacimiento</label></br></br>
+			  								<input name="fecha_nacimiento" type="date" value="<?php echo $today ?>"></br></br>
 			  							</div>
 																				<div>
-			  								<label>Fecha de Defunci&#243;n</label>
-			  								<div name="fecha_de_ingreso" class="bfh-datepicker" data-format="y-m-d" data-date="today"></div>
+			  								<label>Fecha de Defunci&#243;n</label></br></br>
+			  								<input name="fecha_defuncion" type="date" value="<?php echo $today ?>"></br></br>
 			  							</div>
 									</fieldset>
 									<div>

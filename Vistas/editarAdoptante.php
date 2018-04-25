@@ -33,14 +33,12 @@ if (isset($_GET['edit'])) {
 
     if (count($record) == 1 ) {
         $r = mysqli_fetch_array($record);
-        $cedula = $r['id'];
-        $nombre = $r['nombre'];
-        $contrasena = $r['contrasena'];
-        $telefono = $r['telefono'];
-        $correo = $r['correo'];
-        $usuario = $r['usuario'];
-        $centro_de_manejo = $r['centro_de_manejo'];
-        $cargo = $r['cargo'];
+        $nombre_adoptante = $r['nombre_adoptante'];
+		$ced_adoptante = $r['ced_adoptante'];
+        $num_telefono = $r['num_telefono'];
+        $correo_adoptante = $r['correo_adoptante'];
+        $fecha_nac_adoptante = $r['fecha_nac_adoptante'];
+
 
 
     }
@@ -86,36 +84,20 @@ if (isset($_REQUEST['editar'])) {
     <script language="javascript" type="text/javascript">
         function submitreg() {
             var form = document.reg;
-            if(form.nombre.value == ""){
+            if(form.nombre_adoptante.value == ""){
                 alert( "Digite un nombre:." );
                 return false;
             }
-            else if(form.centro_manejo.value == ""){
-                alert( "Digite un Centro de Manejo." );
+            else if(form.ced_adoptante.value == ""){
+                alert( "Digite un C&#233dula." );
                 return false;
             }
-            else if(form.cedula.value == ""){
-                alert( "Digite su Cedula." );
+            else if(form.num_telefono.value == ""){
+                alert( "Digite su Tel&#233fono." );
                 return false;
             }
-            else if(form.correo.value == ""){
+            else if(form.correo_adoptante.value == ""){
                 alert( "Digite su Correo." );
-                return false;
-            }
-            else if(form.telefono.value == ""){
-                alert( "Digite su Telefono." );
-                return false;
-            }
-            else if(form.usuario.value == ""){
-                alert( "Digite un nombre de usuario." );
-                return false;
-            }
-            else if(form.contrasena.value == ""){
-                alert( "Digite una contraseña." );
-                return false;
-            }
-            else if(form.cargo.value == ""){
-                alert( "Digite un cargo." );
                 return false;
             }
         }
@@ -151,20 +133,9 @@ if (isset($_REQUEST['editar'])) {
                 <ul class="nav">
                     <!-- Main menu -->
                     <li><a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
-                    <li><a href="busquedaPersonal.php"><i class="glyphicon glyphicon-stats"></i> Personal </a></li>
-                    <li class="current"><a href="registrar_personal.php"><i class="glyphicon glyphicon-calendar"></i> Registrar Personal </a></li>
+                    <li  class="current"><a href="busquedaAdoptante.php"><i class="glyphicon glyphicon-stats"></i> Adoptantes </a></li>
                     <li><a href="busquedaAnimales.php"><i class="glyphicon glyphicon-list"></i> Animales </a></li>
-                    <li><a href="registrarAnimal.php"><i class="glyphicon glyphicon-record"></i> Registrar Animal </a></li>
-                    <li><a href="entradas_salidas.php"><i class="glyphicon glyphicon-tasks"></i> Entradas y Salidas</a></li>
-                    <li class="submenu"">
-                         <a>
-                            <i class="glyphicon glyphicon-list"></i> Centros de Manejo
-                            <span class="caret pull-right"></span>
-                         </a>
-                         <!-- Sub menu -->
-                         <ul>
-                            <li><a href="busquedaCentroDeManejo.php">Ver Centros</a></li>
-                            <li><a href="registrar_centro_manejo.php">Registrar Centros</a></li>
+                    <li><a href="busquedaContratos.php"><i class="glyphicon glyphicon-tasks"></i> Contratos</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -173,57 +144,31 @@ if (isset($_REQUEST['editar'])) {
           <div class="col-md-6">
 	  					<div class="content-box-large">
 			  				<div class="panel-heading">
-					            <div class="panel-title">Registro de Personal</div>
+					            <div class="panel-title">Registro de Adoptante</div>
 					        </div>
 			  				<div class="panel-body">
 			  					<form action="" method="post" name="reg">
 									<fieldset>
 										<div class="form-group">
 											<label>Nombre Completo</label>
-											<input name="nombre" class="form-control" placeholder="ejm: Jose Pablo Soto Garro" type="text" value="<?php echo $nombre; ?>">
+											<input name="nombre_adoptante" class="form-control" placeholder="ejm: Jose Pablo Soto Garro" type="text" value="<?php echo $nombre_adoptante; ?>">
 										</div>
 										<div class="form-group">
 											<label>C&#233;dula</label>
-											<input name="cedula" class="form-control" placeholder="ejm: 1-1586-2459" type="text" value="<?php echo $cedula; ?>">
+											<input name="ced_adoptante" class="form-control" placeholder="ejm: 1-1586-2459" type="text" value="<?php echo $ced_adoptante; ?>">
 										</div>
 										<div class="form-group">
 											<label>Tel&#233;fono</label>
-											<input name="telefono" class="form-control" placeholder="ejm: 8515-1586" type="text" value="<?php echo $telefono; ?>">
+											<input name="num_telefono" class="form-control" placeholder="ejm: 8515-1586" type="text" value="<?php echo $num_telefono; ?>">
 										</div>
 										<div class="form-group">
 											<label>Correo</label>
-											<input name="correo" class="form-control" placeholder="ejm: jpablosg&#64;sinac.com" type="text" value="<?php echo $correo; ?>">
+											<input name="correo_adoptante" class="form-control" placeholder="ejm: jpablosg&#64;sinac.com" type="text" value="<?php echo $correo_adoptante; ?>">
 										</div>
-										<div class="form-group">
-											<label>Centro de Manejo</label>
-												<input name="centro_manejo" class="form-control" placeholder="--select--" type="text" list="list" value="<?php echo $centro_de_manejo; ?>">
-												<datalist id="list">
-													<option value="Alexandra"></option>
-													<option value="Alice"></option>
-													<option value="Anastasia"></option>
-													<option value="Avelina"></option>
-													<option value="Basilia"></option>
-													<option value="Beatrice"></option>
-													<option value="Cassandra"></option>
-												</datalist> 
-										</div>
-										<div class="form-group">
-											<label>Cargo</label>
-												<input name="cargo" class="form-control" placeholder="--select--" type="text" list="list" value="<?php echo $cargo; ?>">
-												<datalist id="list">
-													<option value="Admin"></option>
-													<option value="Empleado"></option>
-													<option value="Veterinario"></option>
-												</datalist> 
-										</div>
-										<div class="form-group">
-											<label>Nombre de Usuario</label>
-											<input name="usuario" class="form-control" placeholder="ejm: jpablosg" type="text" value="<?php echo $usuario; ?>">
-										</div>
-										<div class="form-group">
-											<label>Contrase&#241;a</label>
-											<input name="contrasena" class="form-control" placeholder="Ingrese su contrase&#241;a" type="password" value="">
-										</div>
+										<div>
+			  								<label>Fecha de Nacimiento</label>
+			  								<input name="fecha_nac_adoptante" type="date" value="<?php echo $fecha_nac_adoptante ?>"></br></br>
+			  							</div>
 									</fieldset>
 									<div>
 											<input class="btn btn-primary fa fa-save" type="submit" name="editar" value="Registrar" onclick="return(submitreg());">
@@ -244,7 +189,7 @@ if (isset($_REQUEST['editar'])) {
          <div class="container">
          
             <div class="copy text-center">
-               Copyright 2014 <a href='#'>Website</a>
+               Facebook <a href='#'>Website</a>
             </div>
             
          </div>

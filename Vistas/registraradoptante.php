@@ -12,13 +12,13 @@
 
 session_start();
 
-include ('../Controladores/personal.php');
+include ('../Controladores/adoptante.php');
 
-$personal = new personal();
+$adoptante = new adoptante();
 
 if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
-    $personal->user_logout();
+    $adoptante->user_logout();
 }
 
 //if($_SESSION['login'] != true)
@@ -28,7 +28,7 @@ if (isset($_REQUEST['logout'])){
 
 if (isset($_REQUEST['submit'])) {
     extract($_REQUEST);
-    $register = $personal->registrar_personal( $nombre, $centro_manejo, $cedula, $correo, $telefono,$usuario,$contrasena,$cargo);
+    $register = $adoptante->registrar_adoptante($nombre_adoptante, $ced_adoptante, $num_telefono, $correo_adoptante, $fecha_nac_adoptante  );
     if ($register) {
         // Registration Success
         echo '<div class="isa_success"><i class="fa fa-check"></i>El registro se ha completado exitosamente</div>';
@@ -64,37 +64,22 @@ if (isset($_REQUEST['submit'])) {
     <script language="javascript" type="text/javascript">
         function submitreg() {
             var form = document.reg;
-            if(form.nombre.value == ""){
+            if(form.nombre_adoptante.value == ""){
                 alert( "Digite un nombre:." );
                 return false;
             }
-            else if(form.centro_manejo.value == ""){
-                alert( "Digite un Centro de Manejo." );
+            else if(form.ced_adoptante.value == ""){
+                alert( "Digite un C&#233dula." );
                 return false;
             }
-            else if(form.cedula.value == ""){
-                alert( "Digite su Cedula." );
+            else if(form.num_telefono.value == ""){
+                alert( "Digite su Tel&#233fono." );
                 return false;
             }
-            else if(form.correo.value == ""){
+            else if(form.correo_adoptante.value == ""){
                 alert( "Digite su Correo." );
                 return false;
             }
-            else if(form.telefono.value == ""){
-                alert( "Digite su Telefono." );
-                return false;
-            }
-            else if(form.usuario.value == ""){
-                alert( "Digite un nombre de usuario." );
-                return false;
-            }
-            else if(form.contrasena.value == ""){
-                alert( "Digite una contraseña." );
-                return false;
-            }
-            else if(form.cargo.value == ""){
-                alert( "Digite un cargo." );
-                return false;
             }
         }
     </script>
@@ -161,7 +146,7 @@ if (isset($_REQUEST['submit'])) {
 										</div>
 										<div>
 			  								<label>Fecha de Nacimiento</label>
-			  								<div name="fecha_de_ingreso" class="bfh-datepicker" data-format="y-m-d" data-date="today"></div>
+			  								<input name="fecha_nac_adoptante" type="date" value="<?php echo $today ?>"></br></br>
 			  							</div>
 									</fieldset>
 									<div>
@@ -183,7 +168,7 @@ if (isset($_REQUEST['submit'])) {
          <div class="container">
          
             <div class="copy text-center">
-               Copyright 2014 <a href='#'>Website</a>
+               Facebook <a href='#'>Website</a>
             </div>
             
          </div>
