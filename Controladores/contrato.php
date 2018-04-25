@@ -17,14 +17,15 @@ class contrato
 
     public function __construct()
     {
-//        $this->db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-//        if (mysqli_connect_errno()) {
-//            echo "Error: No se pudo conectar a la base de datos.";
-//            exit;
-//        }
+        $this->db = oci_connect(DB_USERNAME, DB_PASSWORD, DB_CONN_STRING);
+            
+       if (!$this->db) {
+           $e = oci_error();
+            trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+       }
     }
 
-    public function registrar_centro_de_manejo($id_contrato, $ADOPTANTE_ced_adoptante, $ANIMAL_id_animal, $fecha_contrato, $estado_contrato)
+    public function registrar_contrato($id_contrato, $ADOPTANTE_ced_adoptante, $ANIMAL_id_animal, $fecha_contrato, $estado_contrato)
     {
         //Validaciones
 

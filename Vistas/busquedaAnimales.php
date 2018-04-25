@@ -18,17 +18,25 @@ include ('../Controladores/adoptante.php');
 $adoptante = new adoptante();
 $animal = new animal();
 
+$db = oci_connect(DB_USERNAME, DB_PASSWORD, DB_CONN_STRING);
+            
+              if (!$db) {
+                    $e = oci_error();
+                    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+              }
+
 if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
     $adoptante->user_logout();
 }
 
-//if($_SESSION['login'] != true)
-//{
-//    header("location: login.php");
-//}
+if($_SESSION['login'] != true)
+{
+    header("location: login.php");
+}
 
-$datos = mysqli_query($animal->db, "SELECT * FROM animal");
+$datos = oci_parse($db, "SELECT * FROM animal");
+oci_execute($datos);
 ?>
 
 <script>
@@ -167,32 +175,27 @@ $datos = mysqli_query($animal->db, "SELECT * FROM animal");
                         <tr>
                         
                             <th>Nombre</th>
-                            <th>Edad</th>
-                            <th>Especie</th>
-			<th>Raza</th>
                             <th>Estado</th>
                             <th>Esteril</th>
-                            <th>Sexo</th>
+                            <th>Genero</th>
                             <th>Nacimiento</th>
                             <th>Defuncion</th>
                             <th colspan="2"></th>
                         </tr>
                         </thead>
 
-                        <?php while ($row = mysqli_fetch_array($datos)) { ?>
+                        <?php while ($row = oci_fetch_array($datos)) { ?>
                             <tr>
                                
-                                <td><?php echo $row['nombre_animal']; ?></td>
-                                <td><?php echo $row['edad_animal']; ?></td>
-                                <td><?php echo $row['especie_animal']; ?></td>
-                                <td><?php echo $row['raza_animal']; ?></td>
-                                <td><?php echo $row['estado_animal']; ?></td>
-                                <td><?php echo $row['animal_esteril']; ?></td>
-                                <td><?php echo $row['sexo_animal']; ?></td>
-                                <td><?php echo $row['fecha_nacimiento']; ?></td>
-                                <td><?php echo $row['fecha_defuncion']; ?></td>
+                                <td><?php echo $row['NOMBRE_ANIMAL']; ?></td>
+                                            
+                                <td><?php echo $row['ESTADO_ANIMAL']; ?></td>
+                                <td><?php echo $row['ANIMAL_ESTERIL']; ?></td>
+                                <td><?php echo $row['GENERO_ANIMAL']; ?></td>
+                                <td><?php echo $row['FECHA_NACIMIENTO']; ?></td>
+                                <td><?php echo $row['FECHA_DIFUNCION']; ?></td>
                                 <td>
-                                    <a href="editarAnimal.php?edit=<?php echo $row['ID']; ?>" class="edit_btn" >Edit</a>
+                                    <a href="editarAnimal.php?edit=<?php echo $row['ID_ANIMAL']; ?>" class="edit_btn" >Edit</a>
                                 </td>
                             </tr>
                         <?php } ?>

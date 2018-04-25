@@ -18,6 +18,13 @@ include ('../Controladores/contrato.php');
 
 $adoptante = new adoptante();
 
+$db = oci_connect(DB_USERNAME, DB_PASSWORD, DB_CONN_STRING);
+            
+              if (!$db) {
+                    $e = oci_error();
+                    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+              }
+
 if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
     $adoptante->user_logout();
@@ -29,7 +36,8 @@ if($_SESSION['login'] != true)
 }
 $contrato = new contrato();
 
-//$datos = mysqli_query($contrato->db, "SELECT * FROM centro_de_manejo");
+$datos = oci_parse($db, "SELECT * FROM contrato");
+oci_execute($datos)
 ?>
 
 <script>
@@ -152,24 +160,24 @@ $contrato = new contrato();
                     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="Tabla_De_Centros">
                         <thead>
                         <tr>
-                            <th>ID</th>
+                   
                             <th>C&#233;dula Adoptante</th>
-                            <th>Nombre del Animal</th>
+                           
                             <th>Fecha de Contrato</th>
                             <th>Estado de Contrato</th>
                             <th colspan="2"></th>
                         </tr>
                         </thead>
 
-                        <?php while ($row = mysqli_fetch_array($datos)) { ?>
+                        <?php while ($row = OCI_fetch_array($datos)) { ?>
                             <tr>
-                                <td><?php echo $row['id_contrato']; ?></td>
-                                <td><?php echo $row['ADOPTANTE_ced_adoptante']; ?></td>
-                                <td><?php echo $row['ANIMAL_id_animal']; ?></td>
-                                <td><?php echo $row['fecha_contrato']; ?></td>
-                                <td><?php echo $row['estado_contrato']; ?></td>
+                     
+                                <td><?php echo $row['ADOPTANTE_CED_ADOPTANTE']; ?></td>
+                           
+                                <td><?php echo $row['FECHA_CONTRATO']; ?></td>
+                                <td><?php echo $row['ESTADO_CONTRATO']; ?></td>
                                 <td>
-                                    <a href="editarContrato.php?edit=<?php echo $row['nombre']; ?>" class="edit_btn" >Edit</a>
+                                    <a href="editarContrato.php?edit=<?php echo $row['ID_CONTRATO']; ?>" class="edit_btn" >Edit</a>
                                 </td>
                             </tr>
                         <?php } ?>

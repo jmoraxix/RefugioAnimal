@@ -18,7 +18,12 @@ class animal
 
     public function __construct()
     {
-       
+        $this->db = oci_connect(DB_USERNAME, DB_PASSWORD, DB_CONN_STRING);
+            
+       if (!$this->db) {
+           $e = oci_error();
+           trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+           }
     }
 
 

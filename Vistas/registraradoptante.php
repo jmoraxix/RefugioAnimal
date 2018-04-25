@@ -21,10 +21,10 @@ if (isset($_REQUEST['logout'])){
     $adoptante->user_logout();
 }
 
-//if($_SESSION['login'] != true)
-//{
-//   header("location: login.php");
-//}
+if($_SESSION['login'] != true)
+{
+   header("location: login.php");
+}
 
 if (isset($_REQUEST['submit'])) {
     extract($_REQUEST);

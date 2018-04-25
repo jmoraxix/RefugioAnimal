@@ -23,16 +23,16 @@ if (isset($_REQUEST['logout'])){
     $adoptante->user_logout();
 }
 
-//if($_SESSION['login'] != true)
-//{
-//    header("location: login.php");
-//}
+if($_SESSION['login'] != true)
+{
+    header("location: login.php");
+}
 
 $contrato = new contrato();
 
 if (isset($_REQUEST['submit'])) {
     extract($_REQUEST);
-    $register = $centro_manejo->registrar_centro_de_manejo($id_contrato, $ADOPTANTE_ced_adoptante, $ANIMAL_id_animal, $fecha_contrato, $estado_contrato);
+    $register = $contrato->registrar_contrato($id_contrato, $ADOPTANTE_ced_adoptante, $ANIMAL_id_animal, $fecha_contrato, $estado_contrato);
     if ($register) {
         // Registration Success
         echo '<div class="isa_success"><i class="fa fa-check"></i>El registro se ha completado exitosamente</div>';
