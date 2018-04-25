@@ -16,7 +16,15 @@ include ('../Controladores/adoptante.php');
 
 $adoptante = new adoptante();
 
-/*if (isset($_REQUEST['logout'])){
+$db = oci_connect(DB_USERNAME, DB_PASSWORD, DB_CONN_STRING);
+            
+              if (!$db) {
+                    $e = oci_error();
+                    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+              }
+
+
+if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
     $adoptante->user_logout();
 }
@@ -24,9 +32,11 @@ $adoptante = new adoptante();
 if($_SESSION['login'] != true)
 {
     header("location: login.php");
-}*/
+}
 
-//$datos = mysqli_query($adoptante->db, "SELECT * FROM adoptante");
+
+$datos = oci_parse($db, "SELECT * FROM adoptante");
+oci_execute($datos);
 ?>
 
 <script>
@@ -160,15 +170,15 @@ if($_SESSION['login'] != true)
                         </tr>
                         </thead>
 
-                        <?php while ($row = mysqli_fetch_array($datos)) { ?>
+                        <?php while ($row = oci_fetch_array($datos)) { ?>
                             <tr>
-                                <td><?php echo $row['ced_adoptante']; ?></td>
-                                <td><?php echo $row['nombre_adoptante']; ?></td>
-                                <td><?php echo $row['num_telefono']; ?></td>
-                                <td><?php echo $row['correo_adoptante']; ?></td>
-                                <td><?php echo $row['fecha_nac_adoptante']; ?></td>
+                                <td><?php echo $row['CED_ADOPTANTE']; ?></td>
+                                <td><?php echo $row['NOMBRE_ADOPTANTE']; ?></td>
+                                <td><?php echo $row['NUM_TELEFONO']; ?></td>
+                                <td><?php echo $row['CORREO_ADOPTANTE']; ?></td>
+                                <td><?php echo $row['FECH_NACI_ADOPTANTE']; ?></td>
                                 <td>
-                                    <a href="editarAdoptante.php?edit=<?php echo $row['id']; ?>" class="edit_btn" >Edit</a>
+                                    <a href="editarAdoptante.php?edit=<?php echo $row['CED_ADOPTANTE']; ?>" class="edit_btn" >Edit</a>
                                 </td>
                             </tr>
                         <?php } ?>

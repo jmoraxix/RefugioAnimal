@@ -12,13 +12,13 @@
 
 session_start();
 
-include_once '../Controladores/personal.php';
+include_once '../Controladores/adoptante.php';
 
-$personal = new personal();
+$adoptante = new adoptante();
 
 if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
-    $personal->user_logout();
+    $adoptante->user_logout();
 }
 
 //if($_SESSION['login'] != true)
@@ -67,7 +67,7 @@ if (isset($_REQUEST['logout'])){
                     <li class="current"> <a href="index.php"><i class="glyphicon glyphicon-home"></i> Inicio </a></li>
                     <li><a href="busquedaAdoptante.php"><i class="glyphicon glyphicon-stats"></i> Adoptantes </a></li>
                     <li><a href="busquedaAnimales.php"><i class="glyphicon glyphicon-list"></i> Animales </a></li>
-					<li><a href="busquedaContrato.php"><i class="glyphicon glyphicon-list"></i> Contratos </a></li>
+                    <li><a href="busquedaContrato.php"><i class="glyphicon glyphicon-list"></i> Contratos </a></li>
                 </ul>
              </div>
 		  </div>

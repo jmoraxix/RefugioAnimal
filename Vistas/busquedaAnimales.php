@@ -165,11 +165,11 @@ $datos = mysqli_query($animal->db, "SELECT * FROM animal");
                     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="Tabla_De_Animales">
                         <thead>
                         <tr>
-                            <th>ID</th>
+                        
                             <th>Nombre</th>
                             <th>Edad</th>
                             <th>Especie</th>
-							<th>Raza</th>
+			<th>Raza</th>
                             <th>Estado</th>
                             <th>Esteril</th>
                             <th>Sexo</th>
@@ -181,11 +181,11 @@ $datos = mysqli_query($animal->db, "SELECT * FROM animal");
 
                         <?php while ($row = mysqli_fetch_array($datos)) { ?>
                             <tr>
-                                <td><?php echo $row['ID']; ?></td>
+                               
                                 <td><?php echo $row['nombre_animal']; ?></td>
                                 <td><?php echo $row['edad_animal']; ?></td>
                                 <td><?php echo $row['especie_animal']; ?></td>
-								<td><?php echo $row['raza_animal']; ?></td>
+                                <td><?php echo $row['raza_animal']; ?></td>
                                 <td><?php echo $row['estado_animal']; ?></td>
                                 <td><?php echo $row['animal_esteril']; ?></td>
                                 <td><?php echo $row['sexo_animal']; ?></td>

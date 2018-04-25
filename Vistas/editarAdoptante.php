@@ -12,42 +12,47 @@
 
 session_start();
 
-include ('../Controladores/personal.php');
+include ('../Controladores/adoptante.php');
 
-$personal = new personal();
+$adoptante = new adoptante();
+
+
+$db = oci_connect(DB_USERNAME, DB_PASSWORD, DB_CONN_STRING);
+            
+              if (!$db) {
+                    $e = oci_error();
+                    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+              }
 
 if (isset($_REQUEST['logout'])){
     extract($_REQUEST);
-    $personal->user_logout();
+    $adoptante->user_logout();
 }
 
-//if($_SESSION['login'] != true)
-//{
-//    header("location: login.php");
-//}
+if($_SESSION['login'] != true)
+{
+    header("location: login.php");
+}
 
 if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
 
-    $record = mysqli_query($personal->db, "SELECT * FROM personal WHERE id=$id");
+    $record = oci_parse($db, "SELECT * FROM adoptante WHERE ced_adoptante=$id");
+    oci_execute($record);
 
     if (count($record) == 1 ) {
-        $r = mysqli_fetch_array($record);
-        $nombre_adoptante = $r['nombre_adoptante'];
-		$ced_adoptante = $r['ced_adoptante'];
-        $num_telefono = $r['num_telefono'];
-        $correo_adoptante = $r['correo_adoptante'];
-        $fecha_nac_adoptante = $r['fecha_nac_adoptante'];
-
-
-
+        $r = oci_fetch_array($record);
+        $nombre_adoptante = $r['NOMBRE_ADOPTANTE'];
+		$ced_adoptante = $r['CED_ADOPTANTE'];
+        $num_telefono = $r['NUM_TELEFONO'];
+        $correo_adoptante = $r['CORREO_ADOPTANTE'];
+        $fecha_nac_adoptante = $r['FECH_NACI_ADOPTANTE'];
     }
-
 }
 
 if (isset($_REQUEST['editar'])) {
     extract($_REQUEST);
-    $update = $personal->editar( $nombre, $centro_manejo, $cedula, $correo, $telefono,$usuario,$contrasena,$cargo);
+    $update = $adoptante->editar( $nombre, $centro_manejo, $cedula, $correo, $telefono,$usuario,$contrasena,$cargo);
     if ($update) {
 // Registration Success
         echo '<div class="isa_success"><i class="fa fa-check"></i>Perfil editado exitosamente</div>';

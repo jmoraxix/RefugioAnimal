@@ -65,22 +65,20 @@ class adoptante
         if($ModeloAdoptante->ValidarUsuario($usuario)
             AND $ModeloAdoptante->ValidarContrasena($contrasena))
         {
-            $conn = oci_connect(DB_USERNAME, DB_PASSWORD, DB_CONN_STRING);
+            $db = oci_connect(DB_USERNAME, DB_PASSWORD, DB_CONN_STRING);
             
-              if (!$conn) {
+              if (!$db) {
                     $e = oci_error();
                     trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
               }
               
               
-             $record = oci_parse($conn,  "SELECT * FROM usuario WHERE nombre_usuario='$usuario'");
+             $record = oci_parse($db,  "SELECT * FROM usuario WHERE nombre_usuario='$usuario'");
             oci_execute($record);
-//            $record = mysqli_query($conn, "SELECT * FROM personal WHERE usuario='$usuario'");
             $r = oci_fetch_array($record);
             $contrasenaHash = $r['CONTRA_USUARIO'];
             
             
-            //$contrasenaVerificada = password_verify($contrasena,$contrasenaHash);
             $contrasenaVerificada = validate_password($contrasena,$contrasenaHash);
             if ($contrasenaVerificada) {
                 // this login var will use for the session thing
@@ -133,7 +131,9 @@ class adoptante
         $_SESSION['login'] = FALSE;
 		session_start();
         session_destroy();
+       // oci_close($db);
         header("location: ../index.php");
+        
     }
     
  
