@@ -11,6 +11,8 @@ class adoptante
     {
        
     }
+    
+    
 
     /*** registration process/proceso de registro ***/
     public function registrar_personal($nombre_adoptante, $ced_adoptante, $num_telefono, $correo_adoptante, $fecha_nac_adoptante)
@@ -18,7 +20,7 @@ class adoptante
         //Validaciones
         $ModeloAdoptante = new ModeloAdoptante();
         $ModeloAdoptante->ModeloAdoptante($nombre_adoptante, $ced_adoptante, $num_telefono, $correo_adoptante, $fecha_nac_adoptante);
-
+        
         if($ModeloAdoptante->isValidado())
         {
             $contrasena = password_hash($contrasena,PASSWORD_DEFAULT,['cost'=>10]);
@@ -49,17 +51,37 @@ class adoptante
     }
 
     /*** login process/inicio de sesion ***/
-    public function login( $usuario, $contrasena)
+    public function login($usuario, $contrasena)
     {
+        function validate_password($pass_user, $pass_oracle)
+        {
+            if(strcmp($pass_user, $pass_oracle) == 0){
+                return true;
+            }
+        }
+        
         $ModeloAdoptante = new ModeloAdoptante();
 
         if($ModeloAdoptante->ValidarUsuario($usuario)
             AND $ModeloAdoptante->ValidarContrasena($contrasena))
         {
-            $record = mysqli_query($this->db, "SELECT * FROM personal WHERE usuario='$usuario'");
-            $r = mysqli_fetch_array($record);
-            $contrasenaHash = $r['contrasena'];
-            $contrasenaVerificada = password_verify($contrasena,$contrasenaHash);
+            $conn = oci_connect(DB_USERNAME, DB_PASSWORD, DB_CONN_STRING);
+            
+              if (!$conn) {
+                    $e = oci_error();
+                    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+              }
+              
+              
+             $record = oci_parse($conn,  "SELECT * FROM usuario WHERE nombre_usuario='$usuario'");
+            oci_execute($record);
+//            $record = mysqli_query($conn, "SELECT * FROM personal WHERE usuario='$usuario'");
+            $r = oci_fetch_array($record);
+            $contrasenaHash = $r['CONTRA_USUARIO'];
+            
+            
+            //$contrasenaVerificada = password_verify($contrasena,$contrasenaHash);
+            $contrasenaVerificada = validate_password($contrasena,$contrasenaHash);
             if ($contrasenaVerificada) {
                 // this login var will use for the session thing
                 session_start();
@@ -113,5 +135,8 @@ class adoptante
         session_destroy();
         header("location: ../index.php");
     }
+    
+ 
+    
 }
 ?>
